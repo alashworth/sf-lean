@@ -1,0 +1,7 @@
+[package]
+name = "sf-lean"
+version = "0.1"
+lean_version = "3.4.1"
+path = "src"
+
+[dependencies]
