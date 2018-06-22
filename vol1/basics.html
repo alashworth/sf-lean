@@ -1,0 +1,290 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Functional Programming in Lean &#8212; sf-lean 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Proof by Induction" href="induction.html" />
+    <link rel="prev" title="Preface" href="preface.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="functional-programming-in-lean">
+<h1>Functional Programming in Lean<a class="headerlink" href="#functional-programming-in-lean" title="Permalink to this headline">¶</a></h1>
+<p>Source code: <a class="reference external" href="../../../src/basics.lean">basics.lean</a></p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The functional programming style is founded on simple, everyday mathematical
+intuition: if a procedure or method has no side effects, then (ignoring
+efficiency) all we need to understand about it is how it maps inputs to outputs,
+i.e. we can think of it as just a concrete method for computing a mathematical
+function. This is one sense of the word “functional” in “functional
+programming.” The direct connection between programs and simple mathematical
+objects supports both formal correctness proofs and sound informal reasoning
+about program behavior.</p>
+<p>The other sense in which functional programming is “functional” is that it
+emphasizes the use of functions (or methods) as first-class values — i.e.,
+values that can be passed as arguments to other functions, returned as results,
+included in data structures, etc. The recognition that functions can be treated
+as data gives rise to a host of useful and powerful programming idioms.</p>
+<p>Other common features of functional languages include <em>algebraic data types</em> and
+<em>pattern matching</em>, which make it easy to construct and manipulate rich data
+structures, and sophisticated polymorphic type systems supporting abstraction
+and code reuse. Lean offers all of these features.</p>
+<p>The first half of this chapter introduces the most essential elements of Lean.
+The second half introduces some basic tactics that can be used to prove
+properties of Lean programs.</p>
+</div>
+<div class="section" id="data-and-functions">
+<h2>Data and Functions<a class="headerlink" href="#data-and-functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="enumerated-types">
+<h3>Enumerated Types<a class="headerlink" href="#enumerated-types" title="Permalink to this headline">¶</a></h3>
+<p>One notable aspect of Lean is that its set of built-in features is <em>extremely</em>
+small. For example, instead of providing the usual palette of atomic data types
+(booleans, integers, strings, etc.), Lean offers a powerful mechanism for
+defining new data types from scratch, with all these familiar types as
+instances. Naturally, the Lean distribution comes preloaded with an extensive
+standard library providing definitions of booleans, numbers, and many common
+data structures like lists and hash tables. But there is nothing magic or
+primitive about these library definitions. To illustrate this, we will
+explicitly restate all the definitions we need, before importing them implicitly
+from the library.</p>
+</div>
+<div class="section" id="days-of-the-week">
+<h3>Days of the Week<a class="headerlink" href="#days-of-the-week" title="Permalink to this headline">¶</a></h3>
+<p>To see how this definition mechanism works, let’s start with a very simple
+example. The following declaration tells Lean that we are defining a new set of
+data values — a <em>type</em>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kd">inductive</span> <span class="n">day</span> <span class="o">:</span> <span class="kt">Type</span>
+<span class="bp">|</span> <span class="n">sunday</span> <span class="bp">|</span> <span class="n">monday</span> <span class="bp">|</span> <span class="n">tuesday</span> <span class="bp">|</span> <span class="n">wednesday</span> <span class="bp">|</span> <span class="n">thursday</span> <span class="bp">|</span> <span class="n">friday</span> <span class="bp">|</span> <span class="n">saturday</span> 
+</pre></div>
+</div>
+<p>The type is called day, and its members are monday, tuesday, etc. The second and
+following lines of the definition can be read “monday is a day, tuesday is a
+day, etc.” Having defined day, we can write functions that operate on days.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kd">def</span> <span class="n">next_weekday</span> <span class="o">:</span> <span class="n">day</span> <span class="bp">→</span> <span class="n">day</span>
+<span class="bp">|</span> <span class="n">day.sunday</span> <span class="o">:=</span> <span class="n">day.monday</span>
+<span class="bp">|</span> <span class="n">day.monday</span> <span class="o">:=</span> <span class="n">day.tuesday</span>
+<span class="bp">|</span> <span class="n">day.tuesday</span> <span class="o">:=</span> <span class="n">day.wednesday</span>
+<span class="bp">|</span> <span class="n">day.wednesday</span> <span class="o">:=</span> <span class="n">day.thursday</span>
+<span class="bp">|</span> <span class="n">day.thursday</span> <span class="o">:=</span> <span class="n">day.friday</span>
+<span class="bp">|</span> <span class="n">day.friday</span> <span class="o">:=</span> <span class="n">day.monday</span>
+<span class="bp">|</span> <span class="n">day.saturday</span> <span class="o">:=</span> <span class="n">day.monday</span>
+</pre></div>
+</div>
+<p>One thing to note is that the argument and return types of this function are
+explicitly declared. Like most functional programming languages, Lean can often
+figure out these types for itself when they are not given explicitly — i.e., it
+can do type inference — but we’ll generally include them to make reading easier.</p>
+<p>Having defined a function, we should check that it works on some examples. There
+are actually three different ways to do this in Lean. First, we can use the
+command <code class="docutils literal notranslate"><span class="pre">#reduce</span></code> to evaluate a compound expression involving
+<code class="docutils literal notranslate"><span class="pre">next_weekday</span></code>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span class="k">#reduce</span> <span class="n">next_weekday</span> <span class="n">day.sunday</span>
+<span class="o">[</span><span class="n">Lean</span><span class="o">]</span> <span class="n">day.monday</span>
+</pre></div>
+</div>
+<p>(We show Lean’s responses in comments, but, if you have a computer handy, this
+would be an excellent moment to fire up the Lean server under your favorite text
+editor — either VSCode or Emacs — and try this for yourself. Load this file,
+basics.lean, from the book’s Lean sources, find the above example, submit it to
+Lean, and observe the result.)</p>
+<p>Second, we can record what we expect the result to be in the form of a Lean
+example:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kd">example</span> <span class="o">:</span> <span class="n">next_weekday</span> <span class="o">(</span><span class="n">next_weekday</span> <span class="n">day.saturday</span><span class="o">)</span> <span class="bp">=</span> <span class="n">day.tuesday</span> <span class="o">:=</span> <span class="n">rfl</span>
+</pre></div>
+</div>
+<p>This declaration makes an assertion (that the second weekday after saturday is tuesday). Having made the assertion, we ask Lean to verify it, using the <code class="docutils literal notranslate"><span class="pre">rfl</span></code> term.</p>
+<p>The details are not important for now (we’ll come back to them in a bit), but essentially this can be read as “the assertion we’ve just made can be proved by observing that both sides of the equality evaluate to the same thing.”</p>
+<p>Third, we can ask Lean to extract, from our <code class="docutils literal notranslate"><span class="pre">def</span></code>, a program in some other,
+more conventional, programming language (C++) with a high-performance compiler.
+This facility is very interesting, since it gives us a way to go from
+proved-correct algorithms written in Lean to efficient machine code. (Of course,
+we are trusting the correctness of the C++ compiler, and of Lean’s extraction
+facility itself, but this is still a big step forward from the way most software
+is developed today.) Indeed, this is one of the main uses for which Lean was
+developed. We’ll come back to this topic in later chapters.</p>
+</div>
+<div class="section" id="booleans">
+<h3>Booleans<a class="headerlink" href="#booleans" title="Permalink to this headline">¶</a></h3>
+<p>In a similar way, we can define the standard type <code class="docutils literal notranslate"><span class="pre">bool</span></code> of booleans, with members <code class="docutils literal notranslate"><span class="pre">tt</span></code> and <code class="docutils literal notranslate"><span class="pre">ff</span></code>.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kd">inductive</span> <span class="n">bool&#39;</span> <span class="o">:</span> <span class="kt">Type</span>
+<span class="bp">|</span> <span class="n">tt</span> <span class="bp">|</span> <span class="n">ff</span>
+</pre></div>
+</div>
+<p>Although we are rolling our own booleans here for the sake of building up everything from scratch, Lean does, of course, provide a default implementation of the booleans, together with a multitude of useful functions and lemmas. (Take a look at <code class="docutils literal notranslate"><span class="pre">/library/init/core.lean/</span></code> if you’re interested.) Whenever possible, we’ll name our own definitions and theorems so that they exactly coincide with the ones in the standard library, but with a quote mark.</p>
+<p>Functions over booleans can be defined in the same way as above:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kd">def</span> <span class="n">bnot&#39;</span> <span class="o">:</span> <span class="n">bool&#39;</span> <span class="bp">→</span> <span class="n">bool&#39;</span>
+<span class="bp">|</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">ff</span>
+<span class="bp">|</span> <span class="n">ff</span> <span class="o">:=</span> <span class="n">tt</span>
+
+<span class="kd">def</span> <span class="n">band&#39;</span> <span class="o">:</span> <span class="n">bool&#39;</span> <span class="bp">→</span> <span class="n">bool&#39;</span> <span class="bp">→</span> <span class="n">bool&#39;</span>
+<span class="bp">|</span> <span class="n">tt</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">tt</span>
+<span class="bp">|</span> <span class="n">tt</span> <span class="n">ff</span> <span class="o">:=</span> <span class="n">ff</span>
+<span class="bp">|</span> <span class="n">ff</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">ff</span>
+<span class="bp">|</span> <span class="n">ff</span> <span class="n">ff</span> <span class="o">:=</span> <span class="n">ff</span>
+
+<span class="kd">def</span> <span class="n">bor&#39;</span> <span class="o">:</span> <span class="n">bool&#39;</span> <span class="bp">→</span> <span class="n">bool&#39;</span> <span class="bp">→</span> <span class="n">bool&#39;</span>
+<span class="bp">|</span> <span class="n">tt</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">tt</span>
+<span class="bp">|</span> <span class="n">tt</span> <span class="n">ff</span> <span class="o">:=</span> <span class="n">tt</span>
+<span class="bp">|</span> <span class="n">ff</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">tt</span>
+<span class="bp">|</span> <span class="n">ff</span> <span class="n">ff</span> <span class="o">:=</span> <span class="n">ff</span>
+
+<span class="c">/-</span><span class="cm"> bor unit tests -/</span>
+<span class="kd">example</span> <span class="o">:</span> <span class="n">bor&#39;</span> <span class="n">tt</span> <span class="n">ff</span> <span class="bp">=</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">rfl</span>
+<span class="kd">example</span> <span class="o">:</span> <span class="n">bor&#39;</span> <span class="n">ff</span> <span class="n">ff</span> <span class="bp">=</span> <span class="n">ff</span> <span class="o">:=</span> <span class="n">rfl</span>
+<span class="kd">example</span> <span class="o">:</span> <span class="n">bor&#39;</span> <span class="n">ff</span> <span class="n">tt</span> <span class="bp">=</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">rfl</span>
+<span class="kd">example</span> <span class="o">:</span> <span class="n">bor&#39;</span> <span class="n">tt</span> <span class="n">tt</span> <span class="bp">=</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">rfl</span>
+
+<span class="c1">-- Exercise: 1 star (nandb)</span>
+<span class="kd">def</span> <span class="n">nandb</span> <span class="o">:</span> <span class="n">bool&#39;</span> <span class="bp">→</span> <span class="n">bool&#39;</span> <span class="bp">→</span> <span class="n">bool&#39;</span>
+<span class="bp">|</span> <span class="n">ff</span> <span class="n">ff</span> <span class="o">:=</span> <span class="n">tt</span> 
+<span class="bp">|</span> <span class="n">ff</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">tt</span>
+<span class="bp">|</span> <span class="n">tt</span> <span class="n">ff</span> <span class="o">:=</span> <span class="n">tt</span>
+<span class="bp">|</span> <span class="n">tt</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">ff.</span>
+</pre></div>
+</div>
+<p>These examples show the use of Lean’s <em>equation compiler</em> for definitions. The corresponding multi-argument application syntax is illustrated by the following “unit tests,” which constitute a complete specification — a truth table — for the <code class="docutils literal notranslate"><span class="pre">bor</span></code> function:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kd">example</span> <span class="o">:</span> <span class="n">bor&#39;</span> <span class="n">tt</span> <span class="n">ff</span> <span class="bp">=</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">rfl</span>
+<span class="kd">example</span> <span class="o">:</span> <span class="n">bor&#39;</span> <span class="n">ff</span> <span class="n">ff</span> <span class="bp">=</span> <span class="n">ff</span> <span class="o">:=</span> <span class="n">rfl</span>
+<span class="kd">example</span> <span class="o">:</span> <span class="n">bor&#39;</span> <span class="n">ff</span> <span class="n">tt</span> <span class="bp">=</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">rfl</span>
+<span class="kd">example</span> <span class="o">:</span> <span class="n">bor&#39;</span> <span class="n">tt</span> <span class="n">tt</span> <span class="bp">=</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">rfl</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="function-types">
+<h3>Function Types<a class="headerlink" href="#function-types" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="compound-types">
+<h3>Compound Types<a class="headerlink" href="#compound-types" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="modules">
+<h3>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="numbers">
+<h3>Numbers<a class="headerlink" href="#numbers" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="proof-by-simplification">
+<h2>Proof by Simplification<a class="headerlink" href="#proof-by-simplification" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="proof-by-rewriting">
+<h2>Proof by Rewriting<a class="headerlink" href="#proof-by-rewriting" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="proof-by-case-analysis">
+<h2>Proof by Case Analysis<a class="headerlink" href="#proof-by-case-analysis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="more-on-notation">
+<h3>More on Notation<a class="headerlink" href="#more-on-notation" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="fixpoints-and-structural-recursion">
+<h3>Fixpoints and Structural Recursion<a class="headerlink" href="#fixpoints-and-structural-recursion" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="more-exercises">
+<h2>More Exercises<a class="headerlink" href="#more-exercises" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../top.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Functional Programming in Lean</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#data-and-functions">Data and Functions</a><ul>
+<li><a class="reference internal" href="#enumerated-types">Enumerated Types</a></li>
+<li><a class="reference internal" href="#days-of-the-week">Days of the Week</a></li>
+<li><a class="reference internal" href="#booleans">Booleans</a></li>
+<li><a class="reference internal" href="#function-types">Function Types</a></li>
+<li><a class="reference internal" href="#compound-types">Compound Types</a></li>
+<li><a class="reference internal" href="#modules">Modules</a></li>
+<li><a class="reference internal" href="#numbers">Numbers</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#proof-by-simplification">Proof by Simplification</a></li>
+<li><a class="reference internal" href="#proof-by-rewriting">Proof by Rewriting</a></li>
+<li><a class="reference internal" href="#proof-by-case-analysis">Proof by Case Analysis</a><ul>
+<li><a class="reference internal" href="#more-on-notation">More on Notation</a></li>
+<li><a class="reference internal" href="#fixpoints-and-structural-recursion">Fixpoints and Structural Recursion</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#more-exercises">More Exercises</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../top.html">Documentation overview</a><ul>
+      <li>Previous: <a href="preface.html" title="previous chapter">Preface</a></li>
+      <li>Next: <a href="induction.html" title="next chapter">Proof by Induction</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/vol1/basics.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Pierce et al..
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../_sources/vol1/basics.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

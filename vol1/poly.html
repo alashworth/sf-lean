@@ -1,0 +1,151 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Polymorphism and Higher-Order Functions &#8212; sf-lean 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="More Basic Tactics" href="tactics.html" />
+    <link rel="prev" title="Working with Structured Data" href="lists.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="polymorphism-and-higher-order-functions">
+<h1>Polymorphism and Higher-Order Functions<a class="headerlink" href="#polymorphism-and-higher-order-functions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="polymorphism">
+<h2>Polymorphism<a class="headerlink" href="#polymorphism" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="polymorphic-lists">
+<h3>Polymorphic Lists<a class="headerlink" href="#polymorphic-lists" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="polymorphic-pairs">
+<h3>Polymorphic Pairs<a class="headerlink" href="#polymorphic-pairs" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="polymorphic-options">
+<h3>Polymorphic Options<a class="headerlink" href="#polymorphic-options" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="functions-as-data">
+<h2>Functions as Data<a class="headerlink" href="#functions-as-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="higher-order-functions">
+<h3>Higher-Order Functions<a class="headerlink" href="#higher-order-functions" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="filter">
+<h3>Filter<a class="headerlink" href="#filter" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="anonymous-functions">
+<h3>Anonymous Functions<a class="headerlink" href="#anonymous-functions" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="map">
+<h3>Map<a class="headerlink" href="#map" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="fold">
+<h3>Fold<a class="headerlink" href="#fold" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="functions-that-construct-functions">
+<h3>Functions That Construct Functions<a class="headerlink" href="#functions-that-construct-functions" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="additional-exercises">
+<h2>Additional Exercises<a class="headerlink" href="#additional-exercises" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../top.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Polymorphism and Higher-Order Functions</a><ul>
+<li><a class="reference internal" href="#polymorphism">Polymorphism</a><ul>
+<li><a class="reference internal" href="#polymorphic-lists">Polymorphic Lists</a></li>
+<li><a class="reference internal" href="#polymorphic-pairs">Polymorphic Pairs</a></li>
+<li><a class="reference internal" href="#polymorphic-options">Polymorphic Options</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#functions-as-data">Functions as Data</a><ul>
+<li><a class="reference internal" href="#higher-order-functions">Higher-Order Functions</a></li>
+<li><a class="reference internal" href="#filter">Filter</a></li>
+<li><a class="reference internal" href="#anonymous-functions">Anonymous Functions</a></li>
+<li><a class="reference internal" href="#map">Map</a></li>
+<li><a class="reference internal" href="#fold">Fold</a></li>
+<li><a class="reference internal" href="#functions-that-construct-functions">Functions That Construct Functions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#additional-exercises">Additional Exercises</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../top.html">Documentation overview</a><ul>
+      <li>Previous: <a href="lists.html" title="previous chapter">Working with Structured Data</a></li>
+      <li>Next: <a href="tactics.html" title="next chapter">More Basic Tactics</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/vol1/poly.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Pierce et al..
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../_sources/vol1/poly.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
