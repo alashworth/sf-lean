@@ -12,6 +12,11 @@ BUILDDIR      = build
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
+install-deps:
+	pip3 install https://bitbucket.org/gebner/pygments-main/get/default.tar.gz#egg=Pygments
+	pip3 install 'wheel>=0.29' # needed for old ubuntu versions, https://github.com/pallets/markupsafe/issues/59
+	pip3 install sphinx
+
 .PHONY: help Makefile
 
 # Catch-all target: route all unknown targets to Sphinx using the new
