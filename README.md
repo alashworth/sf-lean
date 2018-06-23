@@ -7,27 +7,27 @@ Tasks
 
 | Chapter       | Search & Replace | Adapt Text | Adapt Code | Review |
 | ------------- | :--------------: | :--------: | :--------: | :----: |
-| preface       | [x]              | [ ]        | [ ]        | [ ]    |
+| preface       | [ ]              | [ ]        | [ ]        | [ ]    |
 | basics        | [x]              | [ ]        | [ ]        | [ ]    |
-| induction     | [x]              | [ ]        | [ ]        | [ ]    |
-| lists         | [x]              | [ ]        | [ ]        | [ ]    |
-| poly          | [x]              | [ ]        | [ ]        | [ ]    |
-| tactics       | [x]              | [ ]        | [ ]        | [ ]    |
-| logic         | [x]              | [ ]        | [ ]        | [ ]    |
-| indprop       | [x]              | [ ]        | [ ]        | [ ]    |
-| maps          | [x]              | [ ]        | [ ]        | [ ]    |
-| proofobjects  | [x]              | [ ]        | [ ]        | [ ]    |
-| indprinciples | [x]              | [ ]        | [ ]        | [ ]    |
-| rel           | [x]              | [ ]        | [ ]        | [ ]    |
-| imp           | [x]              | [ ]        | [ ]        | [ ]    |
-| impparser     | [x]              | [ ]        | [ ]        | [ ]    |
-| impcevalfun   | [x]              | [ ]        | [ ]        | [ ]    |
-| extraction    | [x]              | [ ]        | [ ]        | [ ]    |
-| auto          | [x]              | [ ]        | [ ]        | [ ]    |
-| postscript    | [x]              | [ ]        | [ ]        | [ ]    |
-| bib           | [x]              | [ ]        | [ ]        | [ ]    |
+| induction     | [ ]              | [ ]        | [ ]        | [ ]    |
+| lists         | [ ]              | [ ]        | [ ]        | [ ]    |
+| poly          | [ ]              | [ ]        | [ ]        | [ ]    |
+| tactics       | [ ]              | [ ]        | [ ]        | [ ]    |
+| logic         | [ ]              | [ ]        | [ ]        | [ ]    |
+| indprop       | [ ]              | [ ]        | [ ]        | [ ]    |
+| maps          | [ ]              | [ ]        | [ ]        | [ ]    |
+| proofobjects  | [ ]              | [ ]        | [ ]        | [ ]    |
+| indprinciples | [ ]              | [ ]        | [ ]        | [ ]    |
+| rel           | [ ]              | [ ]        | [ ]        | [ ]    |
+| imp           | [ ]              | [ ]        | [ ]        | [ ]    |
+| impparser     | [ ]              | [ ]        | [ ]        | [ ]    |
+| impcevalfun   | [ ]              | [ ]        | [ ]        | [ ]    |
+| extraction    | [ ]              | [ ]        | [ ]        | [ ]    |
+| auto          | [ ]              | [ ]        | [ ]        | [ ]    |
+| postscript    | [ ]              | [ ]        | [ ]        | [ ]    |
+| bib           | [ ]              | [ ]        | [ ]        | [ ]    |
 
- * *Search & Replace*: replace "Coq" and "Galina" with Lean;
+ * *Search & Replace*: replace "Coq" and "Galina" with "Lean";
 
  * *Adapt Text*: whenever Coq techniques differ from Lean techniques,
     replace for appropriate explanations. Specifically, universes,

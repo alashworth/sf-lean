@@ -1,11 +1,11 @@
-================================================================================
 Functional Programming in Lean
-================================================================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Source code: `basics.lean <../../../src/basics.lean>`_
 
+============
 Introduction
-================================================================================
+============
 
 The functional programming style is founded on simple, everyday mathematical
 intuition: if a procedure or method has no side effects, then (ignoring
@@ -14,28 +14,29 @@ i.e. we can think of it as just a concrete method for computing a mathematical
 function. This is one sense of the word "functional" in "functional
 programming." The direct connection between programs and simple mathematical
 objects supports both formal correctness proofs and sound informal reasoning
-about program behavior. 
+about program behavior.
 
 The other sense in which functional programming is "functional" is that it
 emphasizes the use of functions (or methods) as first-class values — i.e.,
 values that can be passed as arguments to other functions, returned as results,
 included in data structures, etc. The recognition that functions can be treated
-as data gives rise to a host of useful and powerful programming idioms. 
+as data gives rise to a host of useful and powerful programming idioms.
 
 Other common features of functional languages include *algebraic data types* and
 *pattern matching*, which make it easy to construct and manipulate rich data
 structures, and sophisticated polymorphic type systems supporting abstraction
-and code reuse. Lean offers all of these features. 
+and code reuse. Lean offers all of these features.
 
 The first half of this chapter introduces the most essential elements of Lean.
 The second half introduces some basic tactics that can be used to prove
 properties of Lean programs.
 
+==================
 Data and Functions
-================================================================================
+==================
 
 Enumerated Types
---------------------------------------------------------------------------------
+================
 
 One notable aspect of Lean is that its set of built-in features is *extremely*
 small. For example, instead of providing the usual palette of atomic data types
@@ -49,25 +50,50 @@ explicitly restate all the definitions we need, before importing them implicitly
 from the library.
 
 Days of the Week
---------------------------------------------------------------------------------
+================
 
 To see how this definition mechanism works, let's start with a very simple
 example. The following declaration tells Lean that we are defining a new set of
 data values — a *type*.
 
-.. literalinclude:: ../../src/basics.lean
-  :language: lean
-  :start-at: inductive day : Type
-  :end-at: saturday
+.. code-block:: lean
+
+    -- BEGIN
+    inductive day : Type
+    | monday : day
+    | tuesday : day
+    | wednesday : day
+    | thursday : day
+    | friday : day
+    | saturday : day
+    | sunday : day
+    -- END
 
 The type is called day, and its members are monday, tuesday, etc. The second and
 following lines of the definition can be read "monday is a day, tuesday is a
 day, etc." Having defined day, we can write functions that operate on days.
 
-.. literalinclude:: ../../src/basics.lean
-  :language: lean
-  :start-at: def next_weekday : day → day
-  :end-at: | day.saturday := day.monday
+.. code-block:: lean
+
+    inductive day : Type
+    | monday : day
+    | tuesday : day
+    | wednesday : day
+    | thursday : day
+    | friday : day
+    | saturday : day
+    | sunday : day
+    --
+    -- BEGIN
+    def next_weekday : day → day
+    | day.sunday := day.monday
+    | day.monday := day.tuesday
+    | day.tuesday := day.wednesday
+    | day.wednesday := day.thursday
+    | day.thursday := day.friday
+    | day.friday := day.monday
+    | day.saturday := day.monday
+    -- END
 
 One thing to note is that the argument and return types of this function are
 explicitly declared. Like most functional programming languages, Lean can often
@@ -81,8 +107,28 @@ command ``#reduce`` to evaluate a compound expression involving
 
 .. code-block:: lean
 
-  #reduce next_weekday day.sunday
-  [Lean] day.monday
+    inductive day : Type
+    | monday : day
+    | tuesday : day
+    | wednesday : day
+    | thursday : day
+    | friday : day
+    | saturday : day
+    | sunday : day
+    --
+    def next_weekday : day → day
+    | day.sunday := day.monday
+    | day.monday := day.tuesday
+    | day.tuesday := day.wednesday
+    | day.wednesday := day.thursday
+    | day.thursday := day.friday
+    | day.friday := day.monday
+    | day.saturday := day.monday
+    --
+    -- BEGIN
+    #reduce next_weekday day.sunday
+    -- ==> day.monday
+    -- END
 
 (We show Lean's responses in comments, but, if you have a computer handy, this
 would be an excellent moment to fire up the Lean server under your favorite text
@@ -98,7 +144,7 @@ example:
   :start-at: example : next_weekday
   :lines: 1
 
-This declaration makes an assertion (that the second weekday after saturday is tuesday). Having made the assertion, we ask Lean to verify it, using the ``rfl`` term. 
+This declaration makes an assertion (that the second weekday after saturday is tuesday). Having made the assertion, we ask Lean to verify it, using the ``rfl`` term.
 
 The details are not important for now (we'll come back to them in a bit), but essentially this can be read as "the assertion we've just made can be proved by observing that both sides of the equality evaluate to the same thing."
 
@@ -112,16 +158,16 @@ is developed today.) Indeed, this is one of the main uses for which Lean was
 developed. We'll come back to this topic in later chapters.
 
 Booleans
---------------------------------------------------------------------------------
+========
 
-In a similar way, we can define the standard type ``bool`` of booleans, with members ``tt`` and ``ff``. 
+In a similar way, we can define the standard type ``bool`` of booleans, with members ``tt`` and ``ff``.
 
-.. literalinclude:: ../../src/basics.lean
+.. literalinclude :: ../../src/basics.lean
   :language: lean
   :start-at: bool'
   :lines: -2
 
-Although we are rolling our own booleans here for the sake of building up everything from scratch, Lean does, of course, provide a default implementation of the booleans, together with a multitude of useful functions and lemmas. (Take a look at ``/library/init/core.lean/`` if you're interested.) Whenever possible, we'll name our own definitions and theorems so that they exactly coincide with the ones in the standard library, but with a quote mark.
+Although we are rolling our own booleans here for the sake of building up everything from scratch, Lean does, of course, provide a default implementation of the booleans, together with a multitude of useful functions and lemmas. (Take a look at `library/init/core.lean<https://github.com/leanprover/lean/blob/v3.4.1/library/init/core.lean>`_ if you're interested.) Whenever possible, we'll name our own definitions and theorems so that they exactly coincide with the ones in the standard library, but with a quote mark.
 
 Functions over booleans can be defined in the same way as above:
 
@@ -138,31 +184,38 @@ These examples show the use of Lean's *equation compiler* for definitions. The c
   :lines: -4
 
 Function Types
---------------------------------------------------------------------------------
+==============
+
 
 Compound Types
---------------------------------------------------------------------------------
+==============
+
+
 
 Modules
---------------------------------------------------------------------------------
+=======
 
 Numbers
---------------------------------------------------------------------------------
+=======
 
+=======================
 Proof by Simplification
-================================================================================
+=======================
 
+==================
 Proof by Rewriting
-================================================================================
+==================
 
+======================
 Proof by Case Analysis
-================================================================================
+======================
 
 More on Notation
---------------------------------------------------------------------------------
+================
 
 Fixpoints and Structural Recursion
---------------------------------------------------------------------------------
+==================================
 
+==============
 More Exercises
-================================================================================
+==============
