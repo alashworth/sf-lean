@@ -1,3 +1,4 @@
+namespace hidden
 namespace basics
 
 inductive day : Type
@@ -44,28 +45,33 @@ example : bor' ff tt = tt := rfl
 example : bor' tt tt = tt := rfl
 
 -- Exercise: 1 star (nandb)
-def nandb : bool' → bool' → bool'
-| ff ff := tt
-| ff tt := tt
-| tt ff := tt
-| tt tt := ff.
+def bnand : bool' → bool' → bool' :=
+sorry -- replace `:= sorry` with your definition
 
-lemma test_nandb1 : nandb tt ff = tt := rfl
-lemma test_nandb2 : nandb ff ff = tt := rfl
-lemma test_nandb3 : nandb ff tt = tt := rfl
-lemma test_nandb4 : nandb tt tt = ff := rfl
+lemma test_bnand1 : bnand tt ff = tt := sorry -- fill in here
+lemma test_bnand2 : bnand ff ff = tt := sorry -- fill in here
+lemma test_bnand3 : bnand ff tt = tt := sorry -- fill in here
+lemma test_bnand4 : bnand tt tt = ff := sorry -- fill in here
 
--- Exercise: 1 star (andb3)
-def andb3 (b1 : bool) (b2 : bool) (b3 : bool) : bool :=
-match b1, b2, b3 with
-| tt, tt, tt := tt
-| _, _, _ := ff
-end.
+-- Exercise: 1 star (band3)
+def band3 (b1 : bool) (b2 : bool) (b3 : bool) : bool :=
+sorry -- replace `:= sorry` with your definition
 
-lemma test_andb31: (andb3 tt tt tt) = tt := rfl.
-lemma test_andb32: (andb3 ff tt tt) = ff := rfl.
-lemma test_andb33: (andb3 tt ff tt) = ff := rfl.
-lemma test_andb34: (andb3 tt tt ff) = ff := rfl.
+
+#check bool'.tt
+/- ===> tt : bool' -/
+#check (bnot' tt)
+/- ===> bnot' tt : bool' -/
+
+
+#check bnot'
+/- ===> bnot' : bool' → bool' -/
+
+
+lemma test_band31: (band3 tt tt tt) = tt := sorry -- fill in here
+lemma test_band32: (band3 ff tt tt) = ff := sorry -- fill in here
+lemma test_band33: (band3 tt ff tt) = ff := sorry -- fill in here
+lemma test_band34: (band3 tt tt ff) = ff := sorry -- fill in here
 
 -- Exercise: 1 star (factorial)
 def factorial : ℕ → ℕ
@@ -200,3 +206,4 @@ lemma test_bin_incr4 :
   incr (omtt (twice $ omtt zero)) = twice (omtt (omtt zero)) := rfl
 
 end basics
+end hidden

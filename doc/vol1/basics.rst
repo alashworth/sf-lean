@@ -14,18 +14,18 @@ i.e. we can think of it as just a concrete method for computing a mathematical
 function. This is one sense of the word "functional" in "functional
 programming." The direct connection between programs and simple mathematical
 objects supports both formal correctness proofs and sound informal reasoning
-about program behavior. 
+about program behavior.
 
 The other sense in which functional programming is "functional" is that it
 emphasizes the use of functions (or methods) as first-class values — i.e.,
 values that can be passed as arguments to other functions, returned as results,
 included in data structures, etc. The recognition that functions can be treated
-as data gives rise to a host of useful and powerful programming idioms. 
+as data gives rise to a host of useful and powerful programming idioms.
 
 Other common features of functional languages include *algebraic data types* and
 *pattern matching*, which make it easy to construct and manipulate rich data
 structures, and sophisticated polymorphic type systems supporting abstraction
-and code reuse. Lean offers all of these features. 
+and code reuse. Lean offers all of these features.
 
 The first half of this chapter introduces the most essential elements of Lean.
 The second half introduces some basic tactics that can be used to prove
@@ -98,7 +98,7 @@ example:
   :start-at: example : next_weekday
   :lines: 1
 
-This declaration makes an assertion (that the second weekday after saturday is tuesday). Having made the assertion, we ask Lean to verify it, using the ``rfl`` term. 
+This declaration makes an assertion (that the second weekday after saturday is tuesday). Having made the assertion, we ask Lean to verify it, using the ``rfl`` term.
 
 The details are not important for now (we'll come back to them in a bit), but essentially this can be read as "the assertion we've just made can be proved by observing that both sides of the equality evaluate to the same thing."
 
@@ -114,7 +114,7 @@ developed. We'll come back to this topic in later chapters.
 Booleans
 --------------------------------------------------------------------------------
 
-In a similar way, we can define the standard type ``bool`` of booleans, with members ``tt`` and ``ff``. 
+In a similar way, we can define the standard type ``bool`` of booleans, with members ``tt`` and ``ff``.
 
 .. literalinclude:: ../../src/basics.lean
   :language: lean
@@ -137,8 +137,60 @@ These examples show the use of Lean's *equation compiler* for definitions. The c
   :start-after: /- bor unit tests -/
   :lines: -4
 
+Exercise: 1 star (bnand)
+************************
+
+Remove ``sorry`` and complete the definition of the following
+function; then make sure that the ``example`` assertions below can each be
+verified by Lean. (Remove ``sorry`` and fill in each proof, following
+the model of the ``bor'`` tests above.) The function should return ``tt`` if
+either or both of its inputs are ``ff``.
+
+.. literalinclude:: ../../src/basics.lean
+  :language: lean
+  :start-after: -- Exercise: 1 star (nandb)
+  :lines: -8
+
+Exercise: 1 star (band3)
+************************
+
+Do the same for the band3 function below. This function should return
+true when all of its inputs are ``tt``, and ``ff`` otherwise.
+
+.. literalinclude:: ../../src/basics.lean
+  :language: lean
+  :start-after: -- Exercise: 1 star (band3)
+  :lines: -8
+
 Function Types
---------------------------------------------------------------------------------
+--------------
+..
+   to be continued
+
+Every expression in Lean has a type, describing what sort of thing it
+computes. The ``#check`` command asks Lean to print the type of an
+expression.
+
+.. literalinclude:: ../../src/basics.lean
+  :language: lean
+  :start-at: #check bool'.tt
+  :lines: -4
+
+Functions like negb itself are also data values, just like true and
+false. Their types are called function types, and they are written
+with arrows.
+
+.. literalinclude:: ../../src/basics.lean
+  :language: lean
+  :start-at: #check bnot'
+  :lines: -2
+
+The type of ``bnot'``, written ``bool → bool`` and pronounced "bool arrow
+bool," can be read, "Given an input of type bool, this function
+produces an output of type bool." Similarly, the type of ``band'``, written
+``bool → bool → bool``, can be read, "Given two inputs, both of type bool,
+this function produces an output of type bool."
+
 
 Compound Types
 --------------------------------------------------------------------------------
