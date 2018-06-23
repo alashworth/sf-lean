@@ -1,0 +1,12 @@
+language: generic
+cache:
+  directories:
+  - "$TRAVIS_BUILD_DIR/_target"
+
+install:
+  - curl https://raw.githubusercontent.com/Kha/elan/master/elan-init.sh -sSf | sh -s -- --default-toolchain none -y
+  - source ~/.elan/env
+
+script:
+  - echo $TRAVIS_BUILD_DIR
+  - leanpkg test

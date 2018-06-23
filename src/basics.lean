@@ -1,7 +1,7 @@
 namespace basics
 
 inductive day : Type
-| sunday | monday | tuesday | wednesday | thursday | friday | saturday 
+| sunday | monday | tuesday | wednesday | thursday | friday | saturday
 
 def next_weekday : day → day
 | day.sunday := day.monday
@@ -45,27 +45,27 @@ example : bor' tt tt = tt := rfl
 
 -- Exercise: 1 star (nandb)
 def nandb : bool' → bool' → bool'
-| ff ff := tt 
+| ff ff := tt
 | ff tt := tt
 | tt ff := tt
 | tt tt := ff.
 
-lemma test_nandb1 : nandb true false = true := rfl
-lemma test_nandb2 : nandb false false = true := rfl 
-lemma test_nandb3 : nandb false true = true := rfl 
-lemma test_nandb4 : nandb true true = false := rfl
+lemma test_nandb1 : nandb tt ff = tt := rfl
+lemma test_nandb2 : nandb ff ff = tt := rfl
+lemma test_nandb3 : nandb ff tt = tt := rfl
+lemma test_nandb4 : nandb tt tt = ff := rfl
 
 -- Exercise: 1 star (andb3)
 def andb3 (b1 : bool) (b2 : bool) (b3 : bool) : bool :=
-match b1, b2, b3 with 
-| tt, tt, tt := tt 
+match b1, b2, b3 with
+| tt, tt, tt := tt
 | _, _, _ := ff
 end.
 
-lemma test_andb31: (andb3 true true true) = true := rfl.
-lemma test_andb32: (andb3 false true true) = false := rfl.
-lemma test_andb33: (andb3 true false true) = false := rfl.
-lemma test_andb34: (andb3 true true false) = false := rfl.
+lemma test_andb31: (andb3 tt tt tt) = tt := rfl.
+lemma test_andb32: (andb3 ff tt tt) = ff := rfl.
+lemma test_andb33: (andb3 tt ff tt) = ff := rfl.
+lemma test_andb34: (andb3 tt tt ff) = ff := rfl.
 
 -- Exercise: 1 star (factorial)
 def factorial : ℕ → ℕ
@@ -73,7 +73,7 @@ def factorial : ℕ → ℕ
 | 1 := 1
 | (nat.succ n) := (nat.succ n) * factorial n
 
-lemma test_factorial1 : (factorial 3) = 6 := rfl 
+lemma test_factorial1 : (factorial 3) = 6 := rfl
 lemma test_factorial2 : (factorial 5) = 120 := rfl
 
 -- Exercise: 1 star (blt_nat)
@@ -83,38 +83,38 @@ def beq_nat : ℕ → ℕ → bool
 | _ 0 := ff
 | (nat.succ n) (nat.succ m) := beq_nat n m
 
-def leb : ℕ → ℕ → bool 
+def leb : ℕ → ℕ → bool
 | 0 _ := tt
-| (nat.succ n) 0 := ff 
+| (nat.succ n) 0 := ff
 | (nat.succ n) (nat.succ m) := leb n m
 
 lemma test_leb1 : leb 2 2 = tt := rfl
-lemma test_leb2 : leb 2 4 = tt := rfl 
+lemma test_leb2 : leb 2 4 = tt := rfl
 lemma test_leb3 : leb 4 2 = ff := rfl
 
-def blt_nat : ℕ → ℕ → bool := 
+def blt_nat : ℕ → ℕ → bool :=
 λ a b, if ¬ beq_nat a b ∧ leb a b then tt else ff
 
 lemma test_blt_nat1 : (blt_nat 2 2) = ff := rfl
-lemma test_blt_nat2 : (blt_nat 2 4) = tt := rfl 
-lemma test_blt_nat3 : (blt_nat 4 2) = ff := rfl 
+lemma test_blt_nat2 : (blt_nat 2 4) = tt := rfl
+lemma test_blt_nat3 : (blt_nat 4 2) = ff := rfl
 
 -- Exercise: 1 star (plus_id_exercise)
 theorem plus_id_exercise : ∀ n m o : ℕ, n = m → m = o → n + m = m + o :=
 begin
-  introv h1 h2, 
+  introv h1 h2,
   rw [h1, h2]
 end
 
 -- Exercise: 2 stars (mult_S_1)
 theorem mult_S_1 : ∀ n m : ℕ, m = nat.succ n → m * (1 + n) = m * m :=
-begin 
+begin
   introv h1,
   rw [nat.one_add, ←h1],
 end
 
--- Exercise: 2 stars (andb_true_elim2)
-theorem andb_true_elim2 : ∀ b c : bool, band b c = tt → c = tt :=
+-- Exercise: 2 stars (andb_tt_elim2)
+theorem andb_tt_elim2 : ∀ b c : bool, band b c = tt → c = tt :=
 begin
   introv h1,
   cases b,
@@ -123,11 +123,11 @@ begin
       refl,
     cases c,
       contradiction,
-      refl  
+      refl
 end
 
 -- Exercise: 1 star (zero_nbeq_plus_1)
-theorem zero_nbeq_plus_1 : ∀ n : ℕ, beq_nat 0 (n + 1) = false := 
+theorem zero_nbeq_plus_1 : ∀ n : ℕ, beq_nat 0 (n + 1) = ff :=
 by intro n; refl
 
 -- Exercise: 2 stars, optional (decreasing)
@@ -137,15 +137,15 @@ meta def fail_factorial : ℕ → ℕ
 
 -- Exercise: 2 stars (boolean_functions)
 theorem identity_fn_applied_twice :
-  ∀ f : bool → bool, (∀ x : bool, f x = x) → ∀ b : bool, f (f b) = b := 
-begin 
+  ∀ f : bool → bool, (∀ x : bool, f x = x) → ∀ b : bool, f (f b) = b :=
+begin
   intros f hx x,
   rw [hx, hx]
 end
 
 theorem negation_fn_applied_twice :
-  ∀ f : bool → bool, (∀ x : bool, f x = bnot x) → ∀ b : bool, f (f b) = b := 
-begin 
+  ∀ f : bool → bool, (∀ x : bool, f x = bnot x) → ∀ b : bool, f (f b) = b :=
+begin
   intros f hx x,
   rw [hx, hx],
   cases x,
@@ -154,8 +154,8 @@ begin
 end
 
 -- Exercise: 3 stars, optional (andb_eq_orb)
-theorem andb_eq_orb (b c : bool) : band b c = bor b c → b = c := 
-begin 
+theorem andb_eq_orb (b c : bool) : band b c = bor b c → b = c :=
+begin
   cases b,
     cases c,
       intros; refl,
@@ -166,24 +166,24 @@ begin
 end
 
 -- Exercise: 3 stars (binary)
-inductive bin : Type 
+inductive bin : Type
 | zero : bin
 | twice : bin → bin
 | omtt : bin → bin
 
 open bin
-/- 
+/-
   protected def add : nat → nat → nat
   | a  zero     := a
   | a  (succ b) := succ (add a b)
 -/
 
-def incr : bin → bin 
+def incr : bin → bin
 | zero := omtt zero
-| (twice b) := omtt b 
+| (twice b) := omtt b
 | (omtt b) := twice (incr b)
 
-def bin_to_nat : bin → ℕ 
+def bin_to_nat : bin → ℕ
 | zero := 0
 | (twice n) := 2 * (bin_to_nat n)
 | (omtt n) := 2 * (bin_to_nat n) + 1
@@ -191,12 +191,12 @@ def bin_to_nat : bin → ℕ
 instance : has_coe bin ℕ := ⟨bin_to_nat⟩
 instance : has_repr bin := ⟨λ b, repr $ bin_to_nat b⟩
 instance : has_zero bin := ⟨zero⟩
-instance : has_one bin := ⟨omtt zero⟩ 
+instance : has_one bin := ⟨omtt zero⟩
 
 lemma test_bin_incr1 : incr zero = 1 := rfl
 lemma test_bin_incr2 : incr (omtt zero) = twice (omtt zero) := rfl
 lemma test_bin_incr3 : incr (twice zero) = 1 := rfl
-lemma test_bin_incr4 : 
+lemma test_bin_incr4 :
   incr (omtt (twice $ omtt zero)) = twice (omtt (omtt zero)) := rfl
 
 end basics
