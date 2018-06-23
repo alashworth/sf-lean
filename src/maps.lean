@@ -17,10 +17,8 @@ begin
   simp [beq_string] at h,
   exact h,
   intro h,
-  -- Edit:
-  simp [*],
-  -- split_ifs,
-  -- trivial
+  split_ifs,
+  trivial
 end
 
 -- total maps
