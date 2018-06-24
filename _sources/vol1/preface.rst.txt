@@ -32,7 +32,7 @@ System Requirements
 Exercises
 --------------------------------------------------------------------------------
 
-Downloading the Coq Files
+Downloading the Lean Files
 --------------------------------------------------------------------------------
 
 Lecture Videos

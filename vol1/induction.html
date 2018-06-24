@@ -5,8 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Proof by Induction &#8212; sf-lean 0.1 documentation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ascii" />
+    <title>Proof by Induction &#8212; Software Foundations in Lean 3.4.1 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript" src="../_static/documentation_options.js"></script>
@@ -14,6 +14,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Working with Structured Data" href="lists.html" />
@@ -33,18 +34,18 @@
           <div class="body" role="main">
             
   <div class="section" id="proof-by-induction">
-<h1>Proof by Induction<a class="headerlink" href="#proof-by-induction" title="Permalink to this headline">¶</a></h1>
+<h1>Proof by Induction<a class="headerlink" href="#proof-by-induction" title="Permalink to this headline">&#182;</a></h1>
 <div class="section" id="id1">
-<h2>Proof by Induction<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>Proof by Induction<a class="headerlink" href="#id1" title="Permalink to this headline">&#182;</a></h2>
 </div>
 <div class="section" id="proofs-within-proofs">
-<h2>Proofs Within Proofs<a class="headerlink" href="#proofs-within-proofs" title="Permalink to this headline">¶</a></h2>
+<h2>Proofs Within Proofs<a class="headerlink" href="#proofs-within-proofs" title="Permalink to this headline">&#182;</a></h2>
 </div>
 <div class="section" id="formal-vs-informal-proof">
-<h2>Formal vs. Informal Proof<a class="headerlink" href="#formal-vs-informal-proof" title="Permalink to this headline">¶</a></h2>
+<h2>Formal vs. Informal Proof<a class="headerlink" href="#formal-vs-informal-proof" title="Permalink to this headline">&#182;</a></h2>
 </div>
 <div class="section" id="more-exercises">
-<h2>More Exercises<a class="headerlink" href="#more-exercises" title="Permalink to this headline">¶</a></h2>
+<h2>More Exercises<a class="headerlink" href="#more-exercises" title="Permalink to this headline">&#182;</a></h2>
 </div>
 </div>
 
@@ -54,32 +55,55 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../top.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Proof by Induction</a><ul>
-<li><a class="reference internal" href="#id1">Proof by Induction</a></li>
-<li><a class="reference internal" href="#proofs-within-proofs">Proofs Within Proofs</a></li>
-<li><a class="reference internal" href="#formal-vs-informal-proof">Formal vs. Informal Proof</a></li>
-<li><a class="reference internal" href="#more-exercises">More Exercises</a></li>
+<h1 class="logo"><a href="../index.html">Software Foundations in Lean</a></h1>
+
+
+
+
+
+
+
+
+<!-- <h3>Navigation</h3> -->
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Functional Programming in Lean</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Proof by Induction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Proof by Induction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#proofs-within-proofs">Proofs Within Proofs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#formal-vs-informal-proof">Formal vs. Informal Proof</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#more-exercises">More Exercises</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="lists.html">Working with Structured Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="poly.html">Polymorphism and Higher-Order Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tactics.html">More Basic Tactics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logic.html">Logic in Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="indprop.html">Inductively Defined Propositions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maps.html">Total and Partial Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proofobjects.html">The Curry-Howard Correspondence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="indprinciples.html">Induction Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rel.html">Properties of Relations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imp.html">Simple Imperative Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="impparser.html">Lexing and Parsing in Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="impcevalfun.html">An Evaluation Function for Imp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extraction.html">Extracting C++ from Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto.html">More Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="postscript.html">Postscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bib.html">Bibliography</a></li>
 </ul>
-<div class="relations">
-<h3>Related Topics</h3>
+
+
+<hr />
 <ul>
-  <li><a href="../top.html">Documentation overview</a><ul>
-      <li>Previous: <a href="basics.html" title="previous chapter">Functional Programming in Lean</a></li>
-      <li>Next: <a href="lists.html" title="next chapter">Working with Structured Data</a></li>
-  </ul></li>
+    
+    <li class="toctree-l1"><a href="software_foundations_in_lean.pdf">PDF version</a></li>
+    
+    <li class="toctree-l1"><a href="https://leanprover.github.io/">Lean Home</a></li>
+    
 </ul>
-</div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/vol1/induction.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
+
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <div class="searchformwrapper">
@@ -97,10 +121,10 @@
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2018, Pierce et al..
+      &copy;2017, Jeremy Avigad, Leonardo de Moura, and Soonho Kong.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.4</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
