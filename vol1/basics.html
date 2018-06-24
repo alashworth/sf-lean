@@ -81,7 +81,7 @@ example. The following declaration tells Lean that we are defining a new set of
 data values &#8212; a <em>type</em>.</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=inductive%20day%20:%20Type%0D%0A%7C%20sunday%20%7C%20monday%20%7C%20tuesday%20%7C%20wednesday%20%7C%20thursday%20%7C%20friday%20%7C%20saturday%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">inductive</span> <span class="n">day</span> <span class="o">:</span> <span class="kt">Type</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kd">inductive</span> <span class="n">day</span> <span class="o">:</span> <span class="kt">Type</span>
 <span class="bp">|</span> <span class="n">sunday</span> <span class="bp">|</span> <span class="n">monday</span> <span class="bp">|</span> <span class="n">tuesday</span> <span class="bp">|</span> <span class="n">wednesday</span> <span class="bp">|</span> <span class="n">thursday</span> <span class="bp">|</span> <span class="n">friday</span> <span class="bp">|</span> <span class="n">saturday</span>
 </pre></div>
 </div>
@@ -90,14 +90,14 @@ following lines of the definition can be read &#8220;monday is a day, tuesday is
 day, etc.&#8221; Having defined day, we can write functions that operate on days.</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=def%20next_weekday%20:%20day%20%E2%86%92%20day%0D%0A%7C%20day.sunday%20:=%20day.monday%0D%0A%7C%20day.monday%20:=%20day.tuesday%0D%0A%7C%20day.tuesday%20:=%20day.wednesday%0D%0A%7C%20day.wednesday%20:=%20day.thursday%0D%0A%7C%20day.thursday%20:=%20day.friday%0D%0A%7C%20day.friday%20:=%20day.monday%0D%0A%7C%20day.saturday%20:=%20day.monday%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="n">def</span> <span class="n">next_weekday</span> <span class="o">:</span> <span class="n">day</span> <span class="bp">&#8594;</span> <span class="n">day</span>
-<span class="bp">|</span> <span class="n">day</span><span class="bp">.</span><span class="n">sunday</span> <span class="o">:=</span> <span class="n">day</span><span class="bp">.</span><span class="n">monday</span>
-<span class="bp">|</span> <span class="n">day</span><span class="bp">.</span><span class="n">monday</span> <span class="o">:=</span> <span class="n">day</span><span class="bp">.</span><span class="n">tuesday</span>
-<span class="bp">|</span> <span class="n">day</span><span class="bp">.</span><span class="n">tuesday</span> <span class="o">:=</span> <span class="n">day</span><span class="bp">.</span><span class="n">wednesday</span>
-<span class="bp">|</span> <span class="n">day</span><span class="bp">.</span><span class="n">wednesday</span> <span class="o">:=</span> <span class="n">day</span><span class="bp">.</span><span class="n">thursday</span>
-<span class="bp">|</span> <span class="n">day</span><span class="bp">.</span><span class="n">thursday</span> <span class="o">:=</span> <span class="n">day</span><span class="bp">.</span><span class="n">friday</span>
-<span class="bp">|</span> <span class="n">day</span><span class="bp">.</span><span class="n">friday</span> <span class="o">:=</span> <span class="n">day</span><span class="bp">.</span><span class="n">monday</span>
-<span class="bp">|</span> <span class="n">day</span><span class="bp">.</span><span class="n">saturday</span> <span class="o">:=</span> <span class="n">day</span><span class="bp">.</span><span class="n">monday</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kd">def</span> <span class="n">next_weekday</span> <span class="o">:</span> <span class="n">day</span> <span class="bp">&#8594;</span> <span class="n">day</span>
+<span class="bp">|</span> <span class="n">day.sunday</span> <span class="o">:=</span> <span class="n">day.monday</span>
+<span class="bp">|</span> <span class="n">day.monday</span> <span class="o">:=</span> <span class="n">day.tuesday</span>
+<span class="bp">|</span> <span class="n">day.tuesday</span> <span class="o">:=</span> <span class="n">day.wednesday</span>
+<span class="bp">|</span> <span class="n">day.wednesday</span> <span class="o">:=</span> <span class="n">day.thursday</span>
+<span class="bp">|</span> <span class="n">day.thursday</span> <span class="o">:=</span> <span class="n">day.friday</span>
+<span class="bp">|</span> <span class="n">day.friday</span> <span class="o">:=</span> <span class="n">day.monday</span>
+<span class="bp">|</span> <span class="n">day.saturday</span> <span class="o">:=</span> <span class="n">day.monday</span>
 </pre></div>
 </div>
 </div><p>One thing to note is that the argument and return types of this function are
@@ -110,7 +110,7 @@ command <code class="docutils literal notranslate"><span class="pre">#reduce</sp
 <code class="docutils literal notranslate"><span class="pre">next_weekday</span></code>.</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=#reduce%20next_weekday%20day.sunday%0A/-%20==%3E%20day.monday%20-/" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="bp">#</span><span class="n">reduce</span> <span class="n">next_weekday</span> <span class="n">day</span><span class="bp">.</span><span class="n">sunday</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="k">#reduce</span> <span class="n">next_weekday</span> <span class="n">day.sunday</span>
 <span class="c">/-</span><span class="cm"> ==&gt; day.monday -/</span>
 </pre></div>
 </div>
@@ -123,7 +123,7 @@ Lean, and observe the result.)</p>
 example:</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=example%20:%20next_weekday%20(next_weekday%20day.saturday)%20=%20day.tuesday%20:=%20rfl%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">example</span> <span class="o">:</span> <span class="n">next_weekday</span> <span class="o">(</span><span class="n">next_weekday</span> <span class="n">day</span><span class="bp">.</span><span class="n">saturday</span><span class="o">)</span> <span class="bp">=</span> <span class="n">day</span><span class="bp">.</span><span class="n">tuesday</span> <span class="o">:=</span> <span class="n">rfl</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kd">example</span> <span class="o">:</span> <span class="n">next_weekday</span> <span class="o">(</span><span class="n">next_weekday</span> <span class="n">day.saturday</span><span class="o">)</span> <span class="bp">=</span> <span class="n">day.tuesday</span> <span class="o">:=</span> <span class="n">rfl</span>
 </pre></div>
 </div>
 </div><p>This declaration makes an assertion (that the second weekday after
@@ -148,7 +148,7 @@ developed. We&#8217;ll come back to this topic in later chapters.</p>
 booleans, with members <code class="docutils literal notranslate"><span class="pre">tt</span></code> and <code class="docutils literal notranslate"><span class="pre">ff</span></code>.</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=inductive%20bool'%20:%20Type%0D%0A%7C%20tt%20%7C%20ff%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">inductive</span> <span class="n">bool&#39;</span> <span class="o">:</span> <span class="kt">Type</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kd">inductive</span> <span class="n">bool&#39;</span> <span class="o">:</span> <span class="kt">Type</span>
 <span class="bp">|</span> <span class="n">tt</span> <span class="bp">|</span> <span class="n">ff</span>
 </pre></div>
 </div>
@@ -166,10 +166,10 @@ illustrated by the following &#8220;unit tests,&#8221; which constitute a comple
 specification &#8212; a truth table &#8212; for the <code class="docutils literal notranslate"><span class="pre">bor</span></code> function:</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=example%20:%20bor'%20tt%20ff%20=%20tt%20:=%20rfl%0D%0Aexample%20:%20bor'%20ff%20ff%20=%20ff%20:=%20rfl%0D%0Aexample%20:%20bor'%20ff%20tt%20=%20tt%20:=%20rfl%0D%0Aexample%20:%20bor'%20tt%20tt%20=%20tt%20:=%20rfl%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">example</span> <span class="o">:</span> <span class="n">bor&#39;</span> <span class="n">tt</span> <span class="n">ff</span> <span class="bp">=</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">rfl</span>
-<span class="kn">example</span> <span class="o">:</span> <span class="n">bor&#39;</span> <span class="n">ff</span> <span class="n">ff</span> <span class="bp">=</span> <span class="n">ff</span> <span class="o">:=</span> <span class="n">rfl</span>
-<span class="kn">example</span> <span class="o">:</span> <span class="n">bor&#39;</span> <span class="n">ff</span> <span class="n">tt</span> <span class="bp">=</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">rfl</span>
-<span class="kn">example</span> <span class="o">:</span> <span class="n">bor&#39;</span> <span class="n">tt</span> <span class="n">tt</span> <span class="bp">=</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">rfl</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kd">example</span> <span class="o">:</span> <span class="n">bor&#39;</span> <span class="n">tt</span> <span class="n">ff</span> <span class="bp">=</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">rfl</span>
+<span class="kd">example</span> <span class="o">:</span> <span class="n">bor&#39;</span> <span class="n">ff</span> <span class="n">ff</span> <span class="bp">=</span> <span class="n">ff</span> <span class="o">:=</span> <span class="n">rfl</span>
+<span class="kd">example</span> <span class="o">:</span> <span class="n">bor&#39;</span> <span class="n">ff</span> <span class="n">tt</span> <span class="bp">=</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">rfl</span>
+<span class="kd">example</span> <span class="o">:</span> <span class="n">bor&#39;</span> <span class="n">tt</span> <span class="n">tt</span> <span class="bp">=</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">rfl</span>
 </pre></div>
 </div>
 </div><div class="section" id="exercise-1-star-bnand">
@@ -181,13 +181,13 @@ the model of the <code class="docutils literal notranslate"><span class="pre">bo
 either or both of its inputs are <code class="docutils literal notranslate"><span class="pre">ff</span></code>.</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=def%20bnand%20:%20bool'%20%E2%86%92%20bool'%20%E2%86%92%20bool'%20:=%0D%0Asorry%20--%20replace%20%60:=%20sorry%60%20with%20your%20definition%0D%0A%0D%0Alemma%20test_bnand1%20:%20bnand%20tt%20ff%20=%20tt%20:=%20sorry%20--%20fill%20in%20here%0D%0Alemma%20test_bnand2%20:%20bnand%20ff%20ff%20=%20tt%20:=%20sorry%20--%20fill%20in%20here%0D%0Alemma%20test_bnand3%20:%20bnand%20ff%20tt%20=%20tt%20:=%20sorry%20--%20fill%20in%20here%0D%0Alemma%20test_bnand4%20:%20bnand%20tt%20tt%20=%20ff%20:=%20sorry%20--%20fill%20in%20here%0D%0A%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="n">def</span> <span class="n">bnand</span> <span class="o">:</span> <span class="n">bool&#39;</span> <span class="bp">&#8594;</span> <span class="n">bool&#39;</span> <span class="bp">&#8594;</span> <span class="n">bool&#39;</span> <span class="o">:=</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kd">def</span> <span class="n">bnand</span> <span class="o">:</span> <span class="n">bool&#39;</span> <span class="bp">&#8594;</span> <span class="n">bool&#39;</span> <span class="bp">&#8594;</span> <span class="n">bool&#39;</span> <span class="o">:=</span>
 <span class="n">sorry</span> <span class="c1">-- replace `:= sorry` with your definition</span>
 
-<span class="kn">lemma</span> <span class="n">test_bnand1</span> <span class="o">:</span> <span class="n">bnand</span> <span class="n">tt</span> <span class="n">ff</span> <span class="bp">=</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">sorry</span> <span class="c1">-- fill in here</span>
-<span class="kn">lemma</span> <span class="n">test_bnand2</span> <span class="o">:</span> <span class="n">bnand</span> <span class="n">ff</span> <span class="n">ff</span> <span class="bp">=</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">sorry</span> <span class="c1">-- fill in here</span>
-<span class="kn">lemma</span> <span class="n">test_bnand3</span> <span class="o">:</span> <span class="n">bnand</span> <span class="n">ff</span> <span class="n">tt</span> <span class="bp">=</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">sorry</span> <span class="c1">-- fill in here</span>
-<span class="kn">lemma</span> <span class="n">test_bnand4</span> <span class="o">:</span> <span class="n">bnand</span> <span class="n">tt</span> <span class="n">tt</span> <span class="bp">=</span> <span class="n">ff</span> <span class="o">:=</span> <span class="n">sorry</span> <span class="c1">-- fill in here</span>
+<span class="kd">lemma</span> <span class="n">test_bnand1</span> <span class="o">:</span> <span class="n">bnand</span> <span class="n">tt</span> <span class="n">ff</span> <span class="bp">=</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">sorry</span> <span class="c1">-- fill in here</span>
+<span class="kd">lemma</span> <span class="n">test_bnand2</span> <span class="o">:</span> <span class="n">bnand</span> <span class="n">ff</span> <span class="n">ff</span> <span class="bp">=</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">sorry</span> <span class="c1">-- fill in here</span>
+<span class="kd">lemma</span> <span class="n">test_bnand3</span> <span class="o">:</span> <span class="n">bnand</span> <span class="n">ff</span> <span class="n">tt</span> <span class="bp">=</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">sorry</span> <span class="c1">-- fill in here</span>
+<span class="kd">lemma</span> <span class="n">test_bnand4</span> <span class="o">:</span> <span class="n">bnand</span> <span class="n">tt</span> <span class="n">tt</span> <span class="bp">=</span> <span class="n">ff</span> <span class="o">:=</span> <span class="n">sorry</span> <span class="c1">-- fill in here</span>
 </pre></div>
 </div>
 </div></div>
@@ -197,13 +197,13 @@ try it!</a></div><div class="highlight-lean notranslate"><div class="highlight">
 true when all of its inputs are <code class="docutils literal notranslate"><span class="pre">tt</span></code>, and <code class="docutils literal notranslate"><span class="pre">ff</span></code> otherwise.</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=def%20band3%20(b1%20:%20bool')%20(b2%20:%20bool')%20(b3%20:%20bool')%20:%20bool'%20:=%0D%0Asorry%20--%20replace%20%60:=%20sorry%60%20with%20your%20definition%0D%0A%0D%0A%0D%0A#check%20bool'.tt%0D%0A/-%20===%3E%20tt%20:%20bool'%20-/%0D%0A#check%20(bnot'%20tt)%0D%0A/-%20===%3E%20bnot'%20tt%20:%20bool'%20-/%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="n">def</span> <span class="n">band3</span> <span class="o">(</span><span class="n">b1</span> <span class="o">:</span> <span class="n">bool&#39;</span><span class="o">)</span> <span class="o">(</span><span class="n">b2</span> <span class="o">:</span> <span class="n">bool&#39;</span><span class="o">)</span> <span class="o">(</span><span class="n">b3</span> <span class="o">:</span> <span class="n">bool&#39;</span><span class="o">)</span> <span class="o">:</span> <span class="n">bool&#39;</span> <span class="o">:=</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kd">def</span> <span class="n">band3</span> <span class="o">(</span><span class="n">b1</span> <span class="o">:</span> <span class="n">bool&#39;</span><span class="o">)</span> <span class="o">(</span><span class="n">b2</span> <span class="o">:</span> <span class="n">bool&#39;</span><span class="o">)</span> <span class="o">(</span><span class="n">b3</span> <span class="o">:</span> <span class="n">bool&#39;</span><span class="o">)</span> <span class="o">:</span> <span class="n">bool&#39;</span> <span class="o">:=</span>
 <span class="n">sorry</span> <span class="c1">-- replace `:= sorry` with your definition</span>
 
 
-<span class="bp">#</span><span class="kn">check</span> <span class="n">bool&#39;</span><span class="bp">.</span><span class="n">tt</span>
+<span class="k">#check</span> <span class="n">bool&#39;.tt</span>
 <span class="c">/-</span><span class="cm"> ===&gt; tt : bool&#39; -/</span>
-<span class="bp">#</span><span class="kn">check</span> <span class="o">(</span><span class="n">bnot&#39;</span> <span class="n">tt</span><span class="o">)</span>
+<span class="k">#check</span> <span class="o">(</span><span class="n">bnot&#39;</span> <span class="n">tt</span><span class="o">)</span>
 <span class="c">/-</span><span class="cm"> ===&gt; bnot&#39; tt : bool&#39; -/</span>
 </pre></div>
 </div>
@@ -216,9 +216,9 @@ computes. The <code class="docutils literal notranslate"><span class="pre">#chec
 expression.</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=#check%20bool'.tt%0D%0A/-%20===%3E%20tt%20:%20bool'%20-/%0D%0A#check%20(bnot'%20tt)%0D%0A/-%20===%3E%20bnot'%20tt%20:%20bool'%20-/%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="bp">#</span><span class="kn">check</span> <span class="n">bool&#39;</span><span class="bp">.</span><span class="n">tt</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="k">#check</span> <span class="n">bool&#39;.tt</span>
 <span class="c">/-</span><span class="cm"> ===&gt; tt : bool&#39; -/</span>
-<span class="bp">#</span><span class="kn">check</span> <span class="o">(</span><span class="n">bnot&#39;</span> <span class="n">tt</span><span class="o">)</span>
+<span class="k">#check</span> <span class="o">(</span><span class="n">bnot&#39;</span> <span class="n">tt</span><span class="o">)</span>
 <span class="c">/-</span><span class="cm"> ===&gt; bnot&#39; tt : bool&#39; -/</span>
 </pre></div>
 </div>
@@ -227,7 +227,7 @@ false. Their types are called function types, and they are written
 with arrows.</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=#check%20bnot'%0D%0A/-%20===%3E%20bnot'%20:%20bool'%20%E2%86%92%20bool'%20-/%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="bp">#</span><span class="kn">check</span> <span class="n">bnot&#39;</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="k">#check</span> <span class="n">bnot&#39;</span>
 <span class="c">/-</span><span class="cm"> ===&gt; bnot&#39; : bool&#39; &#8594; bool&#39; -/</span>
 </pre></div>
 </div>
@@ -245,11 +245,11 @@ of which is just a bare constructor. Here is a more interesting type
 definition, where one of the constructors takes an argument:</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=inductive%20rgb%20:%20Type%0D%0A%20%20%7C%20red%20:%20rgb%0D%0A%20%20%7C%20green%20:%20rgb%0D%0A%20%20%7C%20blue%20:%20rgb%0D%0Ainductive%20color%20:%20Type%0D%0A%20%20%7C%20black%20:%20color%0D%0A%20%20%7C%20white%20:%20color%0D%0A%20%20%7C%20primary%20:%20rgb%20%E2%86%92%20color%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">inductive</span> <span class="n">rgb</span> <span class="o">:</span> <span class="kt">Type</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kd">inductive</span> <span class="n">rgb</span> <span class="o">:</span> <span class="kt">Type</span>
   <span class="bp">|</span> <span class="n">red</span> <span class="o">:</span> <span class="n">rgb</span>
   <span class="bp">|</span> <span class="n">green</span> <span class="o">:</span> <span class="n">rgb</span>
   <span class="bp">|</span> <span class="n">blue</span> <span class="o">:</span> <span class="n">rgb</span>
-<span class="kn">inductive</span> <span class="n">color</span> <span class="o">:</span> <span class="kt">Type</span>
+<span class="kd">inductive</span> <span class="n">color</span> <span class="o">:</span> <span class="kt">Type</span>
   <span class="bp">|</span> <span class="n">black</span> <span class="o">:</span> <span class="n">color</span>
   <span class="bp">|</span> <span class="n">white</span> <span class="o">:</span> <span class="n">color</span>
   <span class="bp">|</span> <span class="n">primary</span> <span class="o">:</span> <span class="n">rgb</span> <span class="bp">&#8594;</span> <span class="n">color</span>
@@ -281,7 +281,7 @@ sets <code class="docutils literal notranslate"><span class="pre">rgb</span></co
 have done for day and bool.</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=def%20monochrome%20:%20color%20%E2%86%92%20bool'%0D%0A%20%20%7C%20black%20:=%20tt%0D%0A%20%20%7C%20white%20:=%20tt%0D%0A%20%20%7C%20(primary%20p)%20:=%20ff%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="n">def</span> <span class="n">monochrome</span> <span class="o">:</span> <span class="n">color</span> <span class="bp">&#8594;</span> <span class="n">bool&#39;</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kd">def</span> <span class="n">monochrome</span> <span class="o">:</span> <span class="n">color</span> <span class="bp">&#8594;</span> <span class="n">bool&#39;</span>
   <span class="bp">|</span> <span class="n">black</span> <span class="o">:=</span> <span class="n">tt</span>
   <span class="bp">|</span> <span class="n">white</span> <span class="o">:=</span> <span class="n">tt</span>
   <span class="bp">|</span> <span class="o">(</span><span class="n">primary</span> <span class="n">p</span><span class="o">)</span> <span class="o">:=</span> <span class="n">ff</span>
@@ -292,11 +292,11 @@ primary should include either a variable (as above) or a constant of
 appropriate type (as below).</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=def%20isred%20:%20color%20%E2%86%92%20bool'%0D%0A%20%20%7C%20black%20:=%20ff%0D%0A%20%20%7C%20white%20:=%20ff%0D%0A%20%20%7C%20(primary%20red)%20:=%20tt%0D%0A%20%20%7C%20(primary%20_)%20%20%20:=%20ff%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="n">def</span> <span class="n">isred</span> <span class="o">:</span> <span class="n">color</span> <span class="bp">&#8594;</span> <span class="n">bool&#39;</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kd">def</span> <span class="n">isred</span> <span class="o">:</span> <span class="n">color</span> <span class="bp">&#8594;</span> <span class="n">bool&#39;</span>
   <span class="bp">|</span> <span class="n">black</span> <span class="o">:=</span> <span class="n">ff</span>
   <span class="bp">|</span> <span class="n">white</span> <span class="o">:=</span> <span class="n">ff</span>
   <span class="bp">|</span> <span class="o">(</span><span class="n">primary</span> <span class="n">red</span><span class="o">)</span> <span class="o">:=</span> <span class="n">tt</span>
-  <span class="bp">|</span> <span class="o">(</span><span class="n">primary</span> <span class="bp">_</span><span class="o">)</span>   <span class="o">:=</span> <span class="n">ff</span>
+  <span class="bp">|</span> <span class="o">(</span><span class="n">primary</span> <span class="n">_</span><span class="o">)</span>   <span class="o">:=</span> <span class="n">ff</span>
 </pre></div>
 </div>
 </div><p>The pattern <code class="docutils literal notranslate"><span class="pre">primary</span> <span class="pre">_</span></code> here is shorthand for &#8220;primary applied to any
@@ -317,7 +317,7 @@ want to use in the rest because it comes with a tiny bit of convenient
 special notation).</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=namespace%20nat_playground%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">namespace</span> <span class="n">nat_playground</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kn">namespace</span> <span class="n">nat_playground</span>
 </pre></div>
 </div>
 </div></div>
@@ -330,9 +330,9 @@ allow the rules describing its elements to be <em>inductive</em>.</p>
 as follows:</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=inductive%20nat%20:%20Type%0D%0A%20%20%7C%20zero%20:%20nat%0D%0A%20%20%7C%20succ%20:%20nat%20%E2%86%92%20nat.%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">inductive</span> <span class="n">nat</span> <span class="o">:</span> <span class="kt">Type</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kd">inductive</span> <span class="n">nat</span> <span class="o">:</span> <span class="kt">Type</span>
   <span class="bp">|</span> <span class="n">zero</span> <span class="o">:</span> <span class="n">nat</span>
-  <span class="bp">|</span> <span class="n">succ</span> <span class="o">:</span> <span class="n">nat</span> <span class="bp">&#8594;</span> <span class="n">nat</span><span class="bp">.</span>
+  <span class="bp">|</span> <span class="n">succ</span> <span class="o">:</span> <span class="n">nat</span> <span class="bp">&#8594;</span> <span class="n">nat.</span>
 </pre></div>
 </div>
 </div><dl class="docutils">
@@ -373,7 +373,7 @@ written as some string of <code class="docutils literal notranslate"><span class
 we like, we can write essentially the same definition this way:</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=inductive%20nat'%20:%20Type%0D%0A%20%20%7C%20stop%20:%20nat'%0D%0A%20%20%7C%20tick%20:%20nat'%20%E2%86%92%20nat'%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">inductive</span> <span class="n">nat&#39;</span> <span class="o">:</span> <span class="kt">Type</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kd">inductive</span> <span class="n">nat&#39;</span> <span class="o">:</span> <span class="kt">Type</span>
   <span class="bp">|</span> <span class="n">stop</span> <span class="o">:</span> <span class="n">nat&#39;</span>
   <span class="bp">|</span> <span class="n">tick</span> <span class="o">:</span> <span class="n">nat&#39;</span> <span class="bp">&#8594;</span> <span class="n">nat&#39;</span>
 </pre></div>
@@ -385,8 +385,8 @@ representations of natural numbers just as we did above with booleans
 and days &#8212; for example, here is the predecessor function:</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=open%20nat_playground.nat%0D%0Adef%20pred%20:%20nat%20%E2%86%92%20nat%0D%0A%20%20%7C%20zero%20:=%20zero%0D%0A%20%20%7C%20(succ%20n)%20:=%20n%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">open</span> <span class="n">nat_playground</span><span class="bp">.</span><span class="n">nat</span>
-<span class="n">def</span> <span class="n">pred</span> <span class="o">:</span> <span class="n">nat</span> <span class="bp">&#8594;</span> <span class="n">nat</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kn">open</span> <span class="n">nat_playground.nat</span>
+<span class="kd">def</span> <span class="n">pred</span> <span class="o">:</span> <span class="n">nat</span> <span class="bp">&#8594;</span> <span class="n">nat</span>
   <span class="bp">|</span> <span class="n">zero</span> <span class="o">:=</span> <span class="n">zero</span>
   <span class="bp">|</span> <span class="o">(</span><span class="n">succ</span> <span class="n">n</span><span class="o">)</span> <span class="o">:=</span> <span class="n">n</span>
 </pre></div>
@@ -395,7 +395,7 @@ try it!</a></div><div class="highlight-lean notranslate"><div class="highlight">
 some <code class="docutils literal notranslate"><span class="pre">n'</span></code>, then return <code class="docutils literal notranslate"><span class="pre">n'</span></code>.&#8221;</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=end%20nat_playground%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">end</span> <span class="n">nat_playground</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kd">end</span> <span class="n">nat_playground</span>
 </pre></div>
 </div>
 </div><p>Because natural numbers are such a pervasive form of data, Lean
@@ -405,16 +405,16 @@ notation defined by the constructors <code class="docutils literal notranslate">
 prints numbers in arabic form by default:</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=open%20nat%0D%0A#check%20succ%20(succ%20(succ%20(succ%20zero)))%0D%0A/-%20===%3E%204%20:%20%E2%84%95%20-/%0D%0A%0D%0Adef%20minustwo%20:%20nat%20%E2%86%92%20nat%0D%0A%20%20%7C%20zero%20:=%20zero%0D%0A%20%20%7C%20(succ%20zero)%20:=%20zero%0D%0A%20%20%7C%20(succ%20(succ%20n))%20:=%20n%0D%0A%0D%0A#reduce%20(minustwo%204).%0D%0A/-%20===%3E%202%20-/%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">open</span> <span class="n">nat</span>
-<span class="bp">#</span><span class="kn">check</span> <span class="n">succ</span> <span class="o">(</span><span class="n">succ</span> <span class="o">(</span><span class="n">succ</span> <span class="o">(</span><span class="n">succ</span> <span class="n">zero</span><span class="o">)))</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kn">open</span> <span class="n">nat</span>
+<span class="k">#check</span> <span class="n">succ</span> <span class="o">(</span><span class="n">succ</span> <span class="o">(</span><span class="n">succ</span> <span class="o">(</span><span class="n">succ</span> <span class="n">zero</span><span class="o">)))</span>
 <span class="c">/-</span><span class="cm"> ===&gt; 4 : &#8469; -/</span>
 
-<span class="n">def</span> <span class="n">minustwo</span> <span class="o">:</span> <span class="n">nat</span> <span class="bp">&#8594;</span> <span class="n">nat</span>
+<span class="kd">def</span> <span class="n">minustwo</span> <span class="o">:</span> <span class="n">nat</span> <span class="bp">&#8594;</span> <span class="n">nat</span>
   <span class="bp">|</span> <span class="n">zero</span> <span class="o">:=</span> <span class="n">zero</span>
   <span class="bp">|</span> <span class="o">(</span><span class="n">succ</span> <span class="n">zero</span><span class="o">)</span> <span class="o">:=</span> <span class="n">zero</span>
   <span class="bp">|</span> <span class="o">(</span><span class="n">succ</span> <span class="o">(</span><span class="n">succ</span> <span class="n">n</span><span class="o">))</span> <span class="o">:=</span> <span class="n">n</span>
 
-<span class="bp">#</span><span class="n">reduce</span> <span class="o">(</span><span class="n">minustwo</span> <span class="mi">4</span><span class="o">)</span><span class="bp">.</span>
+<span class="k">#reduce</span> <span class="o">(</span><span class="n">minustwo</span> <span class="mi">4</span><span class="o">)</span><span class="bp">.</span>
 <span class="c">/-</span><span class="cm"> ===&gt; 2 -/</span>
 </pre></div>
 </div>
@@ -422,9 +422,9 @@ try it!</a></div><div class="highlight-lean notranslate"><div class="highlight">
 <code class="docutils literal notranslate"><span class="pre">pred</span></code> and functions like <code class="docutils literal notranslate"><span class="pre">minustwo</span></code>:</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=#check%20succ%0A#check%20pred%0A#check%20minustwo" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="bp">#</span><span class="kn">check</span> <span class="n">succ</span>
-<span class="bp">#</span><span class="kn">check</span> <span class="n">pred</span>
-<span class="bp">#</span><span class="kn">check</span> <span class="n">minustwo</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="k">#check</span> <span class="n">succ</span>
+<span class="k">#check</span> <span class="n">pred</span>
+<span class="k">#check</span> <span class="n">minustwo</span>
 </pre></div>
 </div>
 </div><p>These are all things that can be applied to a number to yield a
@@ -445,7 +445,7 @@ number <code class="docutils literal notranslate"><span class="pre">n</span></co
 is even:</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=def%20evenb%20:%20nat%20%E2%86%92%20bool%0D%0A%20%20%7C%20zero%20:=%20true%0D%0A%20%20%7C%20(succ%20zero)%20:=%20false%0D%0A%20%20%7C%20(succ%20(succ%20n))%20:=%20evenb%20n%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="n">def</span> <span class="n">evenb</span> <span class="o">:</span> <span class="n">nat</span> <span class="bp">&#8594;</span> <span class="n">bool</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kd">def</span> <span class="n">evenb</span> <span class="o">:</span> <span class="n">nat</span> <span class="bp">&#8594;</span> <span class="n">bool</span>
   <span class="bp">|</span> <span class="n">zero</span> <span class="o">:=</span> <span class="n">true</span>
   <span class="bp">|</span> <span class="o">(</span><span class="n">succ</span> <span class="n">zero</span><span class="o">)</span> <span class="o">:=</span> <span class="n">false</span>
   <span class="bp">|</span> <span class="o">(</span><span class="n">succ</span> <span class="o">(</span><span class="n">succ</span> <span class="n">n</span><span class="o">))</span> <span class="o">:=</span> <span class="n">evenb</span> <span class="n">n</span>
@@ -455,11 +455,11 @@ try it!</a></div><div class="highlight-lean notranslate"><div class="highlight">
 simpler definition:</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=def%20oddb%20(n:nat)%20:%20bool%20:=%20bnot%20(evenb%20n)%0D%0A%0D%0Aexample%20:%20oddb%201%20=%20tt%20:=%20rfl%0D%0A%0D%0Aexample%20:%20oddb%204%20=%20ff%20:=%20rfl%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="n">def</span> <span class="n">oddb</span> <span class="o">(</span><span class="n">n</span><span class="o">:</span><span class="n">nat</span><span class="o">)</span> <span class="o">:</span> <span class="n">bool</span> <span class="o">:=</span> <span class="n">bnot</span> <span class="o">(</span><span class="n">evenb</span> <span class="n">n</span><span class="o">)</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kd">def</span> <span class="n">oddb</span> <span class="o">(</span><span class="n">n</span><span class="o">:</span><span class="n">nat</span><span class="o">)</span> <span class="o">:</span> <span class="n">bool</span> <span class="o">:=</span> <span class="n">bnot</span> <span class="o">(</span><span class="n">evenb</span> <span class="n">n</span><span class="o">)</span>
 
-<span class="kn">example</span> <span class="o">:</span> <span class="n">oddb</span> <span class="mi">1</span> <span class="bp">=</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">rfl</span>
+<span class="kd">example</span> <span class="o">:</span> <span class="n">oddb</span> <span class="mi">1</span> <span class="bp">=</span> <span class="n">tt</span> <span class="o">:=</span> <span class="n">rfl</span>
 
-<span class="kn">example</span> <span class="o">:</span> <span class="n">oddb</span> <span class="mi">4</span> <span class="bp">=</span> <span class="n">ff</span> <span class="o">:=</span> <span class="n">rfl</span>
+<span class="kd">example</span> <span class="o">:</span> <span class="n">oddb</span> <span class="mi">4</span> <span class="bp">=</span> <span class="n">ff</span> <span class="o">:=</span> <span class="n">rfl</span>
 </pre></div>
 </div>
 </div><p>(You will notice if you step through these proofs that simpl actually
@@ -468,9 +468,9 @@ reflexivity. We&#8217;ll see more about why that is shortly.)</p>
 <p>Naturally, we can also define multi-argument functions by recursion.</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=namespace%20nat_playground2%0D%0A%0D%0Adef%20plus%20:%20nat%20%E2%86%92%20nat%20%E2%86%92%20nat%0D%0A%20%20%7C%20zero%20m%20:=%20m%0D%0A%20%20%7C%20(succ%20n)%20m%20:=%20succ%20(plus%20n%20m)%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">namespace</span> <span class="n">nat_playground2</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kn">namespace</span> <span class="n">nat_playground2</span>
 
-<span class="n">def</span> <span class="n">plus</span> <span class="o">:</span> <span class="n">nat</span> <span class="bp">&#8594;</span> <span class="n">nat</span> <span class="bp">&#8594;</span> <span class="n">nat</span>
+<span class="kd">def</span> <span class="n">plus</span> <span class="o">:</span> <span class="n">nat</span> <span class="bp">&#8594;</span> <span class="n">nat</span> <span class="bp">&#8594;</span> <span class="n">nat</span>
   <span class="bp">|</span> <span class="n">zero</span> <span class="n">m</span> <span class="o">:=</span> <span class="n">m</span>
   <span class="bp">|</span> <span class="o">(</span><span class="n">succ</span> <span class="n">n</span><span class="o">)</span> <span class="n">m</span> <span class="o">:=</span> <span class="n">succ</span> <span class="o">(</span><span class="n">plus</span> <span class="n">n</span> <span class="n">m</span><span class="o">)</span>
 </pre></div>
@@ -478,13 +478,13 @@ try it!</a></div><div class="highlight-lean notranslate"><div class="highlight">
 </div><p>Adding three to two now gives us five, as we&#8217;d expect.</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=#reduce%20(plus%203%202)" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="bp">#</span><span class="n">reduce</span> <span class="o">(</span><span class="n">plus</span> <span class="mi">3</span> <span class="mi">2</span><span class="o">)</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="k">#reduce</span> <span class="o">(</span><span class="n">plus</span> <span class="mi">3</span> <span class="mi">2</span><span class="o">)</span>
 </pre></div>
 </div>
 </div><p>The simplification that Lean performs to reach this conclusion can be visualized as follows:</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=/-%20%20plus%20(succ%20(succ%20(succ%20O)))%20(succ%20(succ%20O))%0D%0A==%3E%20succ%20(plus%20(succ%20(succ%20O))%20(succ%20(succ%20O)))%0D%0A%20%20%20%20%20%20by%20the%20second%20clause%20of%20the%20match%0D%0A==%3E%20succ%20(succ%20(plus%20(succ%20O)%20(succ%20(succ%20O))))%0D%0A%20%20%20%20%20%20by%20the%20second%20clause%20of%20the%20match%0D%0A==%3E%20succ%20(succ%20(succ%20(plus%20O%20(succ%20(succ%20O)))))%0D%0A%20%20%20%20%20%20by%20the%20second%20clause%20of%20the%20match%0D%0A==%3E%20succ%20(succ%20(succ%20(succ%20(succ%20O))))%0D%0A%20%20%20%20%20%20by%20the%20first%20clause%20of%20the%20match%0D%0A-/%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="c">/-</span><span class="cm">  plus (succ (succ (succ O))) (succ (succ O))</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="c">/-</span><span class="cm">  plus (succ (succ (succ O))) (succ (succ O))</span>
 <span class="cm">==&gt; succ (plus (succ (succ O)) (succ (succ O)))</span>
 <span class="cm">      by the second clause of the match</span>
 <span class="cm">==&gt; succ (succ (plus (succ O) (succ (succ O))))</span>
@@ -499,9 +499,9 @@ try it!</a></div><div class="highlight-lean notranslate"><div class="highlight">
 </div><p>You can match two expressions at once by putting a comma between them:</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=def%20minus%20:%20nat%20%E2%86%92%20nat%20%E2%86%92%20nat%0D%0A%20%20%7C%20zero%20_%20:=%20zero%0D%0A%20%20%7C%20n&#64;(succ%20_)%20zero%20:=%20n%0D%0A%20%20%7C%20(succ%20n)%20(succ%20m)%20:=%20minus%20n%20m%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="n">def</span> <span class="n">minus</span> <span class="o">:</span> <span class="n">nat</span> <span class="bp">&#8594;</span> <span class="n">nat</span> <span class="bp">&#8594;</span> <span class="n">nat</span>
-  <span class="bp">|</span> <span class="n">zero</span> <span class="bp">_</span> <span class="o">:=</span> <span class="n">zero</span>
-  <span class="bp">|</span> <span class="n">n</span><span class="bp">@</span><span class="o">(</span><span class="n">succ</span> <span class="bp">_</span><span class="o">)</span> <span class="n">zero</span> <span class="o">:=</span> <span class="n">n</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kd">def</span> <span class="n">minus</span> <span class="o">:</span> <span class="n">nat</span> <span class="bp">&#8594;</span> <span class="n">nat</span> <span class="bp">&#8594;</span> <span class="n">nat</span>
+  <span class="bp">|</span> <span class="n">zero</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">zero</span>
+  <span class="bp">|</span> <span class="n">n</span><span class="bp">@</span><span class="o">(</span><span class="n">succ</span> <span class="n">_</span><span class="o">)</span> <span class="n">zero</span> <span class="o">:=</span> <span class="n">n</span>
   <span class="bp">|</span> <span class="o">(</span><span class="n">succ</span> <span class="n">n</span><span class="o">)</span> <span class="o">(</span><span class="n">succ</span> <span class="n">m</span><span class="o">)</span> <span class="o">:=</span> <span class="n">minus</span> <span class="n">n</span> <span class="n">m</span>
 </pre></div>
 </div>
@@ -515,7 +515,7 @@ type, they can be written together. In the following definition, <code class="do
 <span class="pre">nat)</span></code>.</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=def%20subtracted_from%20(m%20n%20:%20nat)%20:%20nat%20:=%20minus%20n%20m%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="n">def</span> <span class="n">subtracted_from</span> <span class="o">(</span><span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">nat</span><span class="o">)</span> <span class="o">:</span> <span class="n">nat</span> <span class="o">:=</span> <span class="n">minus</span> <span class="n">n</span> <span class="n">m</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kd">def</span> <span class="n">subtracted_from</span> <span class="o">(</span><span class="n">m</span> <span class="n">n</span> <span class="o">:</span> <span class="n">nat</span><span class="o">)</span> <span class="o">:</span> <span class="n">nat</span> <span class="o">:=</span> <span class="n">minus</span> <span class="n">n</span> <span class="n">m</span>
 </pre></div>
 </div>
 </div><p>So far, we have only displayed function arguments by either naming all
@@ -523,7 +523,7 @@ of them or matching them in a function&#8217;s equation. The function
 <code class="docutils literal notranslate"><span class="pre">mult</span></code> below illustrates how we can mix and match the two styles:</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=def%20mult%20(m%20:%20nat)%20:%20nat%20%E2%86%92%20nat%0D%0A%20%20%7C%20zero%20:=%20zero%0D%0A%20%20%7C%20(succ%20n)%20:=%20plus%20m%20(mult%20n)%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="n">def</span> <span class="n">mult</span> <span class="o">(</span><span class="n">m</span> <span class="o">:</span> <span class="n">nat</span><span class="o">)</span> <span class="o">:</span> <span class="n">nat</span> <span class="bp">&#8594;</span> <span class="n">nat</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kd">def</span> <span class="n">mult</span> <span class="o">(</span><span class="n">m</span> <span class="o">:</span> <span class="n">nat</span><span class="o">)</span> <span class="o">:</span> <span class="n">nat</span> <span class="bp">&#8594;</span> <span class="n">nat</span>
   <span class="bp">|</span> <span class="n">zero</span> <span class="o">:=</span> <span class="n">zero</span>
   <span class="bp">|</span> <span class="o">(</span><span class="n">succ</span> <span class="n">n</span><span class="o">)</span> <span class="o">:=</span> <span class="n">plus</span> <span class="n">m</span> <span class="o">(</span><span class="n">mult</span> <span class="n">n</span><span class="o">)</span>
 </pre></div>
@@ -535,11 +535,11 @@ sometimes shorten the recursive calls in complex functions defined by
 recursion.</p>
 <div style="position: relative">
 <div style='position: absolute; right: 0; top: 0; padding: 1ex'><a href="https://leanprover.github.io/live/3.4.1/#code=def%20exp%20(base%20:%20nat)%20:%20nat%20%E2%86%92%20nat%0D%0A%20%20%7C%20zero%20:=%20succ%20zero%0D%0A%20%20%7C%20(succ%20p)%20:=%20mult%20base%20(exp%20p)%0D%0A%0D%0Aend%20nat_playground2%0D%0A" target="_blank">
-try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="n">def</span> <span class="n">exp</span> <span class="o">(</span><span class="n">base</span> <span class="o">:</span> <span class="n">nat</span><span class="o">)</span> <span class="o">:</span> <span class="n">nat</span> <span class="bp">&#8594;</span> <span class="n">nat</span>
+try it!</a></div><div class="highlight-lean notranslate"><div class="highlight"><pre><span class="kd">def</span> <span class="n">exp</span> <span class="o">(</span><span class="n">base</span> <span class="o">:</span> <span class="n">nat</span><span class="o">)</span> <span class="o">:</span> <span class="n">nat</span> <span class="bp">&#8594;</span> <span class="n">nat</span>
   <span class="bp">|</span> <span class="n">zero</span> <span class="o">:=</span> <span class="n">succ</span> <span class="n">zero</span>
   <span class="bp">|</span> <span class="o">(</span><span class="n">succ</span> <span class="n">p</span><span class="o">)</span> <span class="o">:=</span> <span class="n">mult</span> <span class="n">base</span> <span class="o">(</span><span class="n">exp</span> <span class="n">p</span><span class="o">)</span>
 
-<span class="kn">end</span> <span class="n">nat_playground2</span>
+<span class="kd">end</span> <span class="n">nat_playground2</span>
 </pre></div>
 </div>
 </div><div class="section" id="exercise-1-star-factorial">

@@ -473,7 +473,6 @@ recursion.
 Exercise: 1 star (factorial)
 ****************************
 
-
 ..
    to be continued
 
