@@ -1,4 +1,3 @@
-namespace hidden
 namespace basics
 
 inductive day : Type
@@ -20,7 +19,7 @@ example : next_weekday (next_weekday day.saturday) = day.tuesday := rfl
 inductive bool' : Type
 | tt | ff
 
-open bool'
+namespace bool'
 
 def bnot' : bool' → bool'
 | tt := ff
@@ -54,7 +53,7 @@ lemma test_bnand3 : bnand ff tt = tt := sorry -- fill in here
 lemma test_bnand4 : bnand tt tt = ff := sorry -- fill in here
 
 -- Exercise: 1 star (band3)
-def band3 (b1 : bool) (b2 : bool) (b3 : bool) : bool :=
+def band3 (b1 : bool') (b2 : bool') (b3 : bool') : bool' :=
 sorry -- replace `:= sorry` with your definition
 
 
@@ -72,6 +71,116 @@ lemma test_band31: (band3 tt tt tt) = tt := sorry -- fill in here
 lemma test_band32: (band3 ff tt tt) = ff := sorry -- fill in here
 lemma test_band33: (band3 tt ff tt) = ff := sorry -- fill in here
 lemma test_band34: (band3 tt tt ff) = ff := sorry -- fill in here
+
+end bool'
+
+namespace color
+
+inductive rgb : Type
+  | red : rgb
+  | green : rgb
+  | blue : rgb
+inductive color : Type
+  | black : color
+  | white : color
+  | primary : rgb → color
+
+open rgb color bool'
+def monochrome : color → bool'
+  | black := tt
+  | white := tt
+  | (primary p) := ff
+
+def isred : color → bool'
+  | black := ff
+  | white := ff
+  | (primary red) := tt
+  | (primary _)   := ff
+
+end color
+
+namespace nat_playground
+
+inductive nat : Type
+  | zero : nat
+  | succ : nat → nat.
+
+inductive nat' : Type
+  | stop : nat'
+  | tick : nat' → nat'
+
+open nat_playground.nat
+def pred : nat → nat
+  | zero := zero
+  | (succ n) := n
+
+end nat_playground
+
+/- define minustwo -/
+open nat
+#check succ (succ (succ (succ zero)))
+/- ===> 4 : ℕ -/
+
+def minustwo : nat → nat
+  | zero := zero
+  | (succ zero) := zero
+  | (succ (succ n)) := n
+
+#reduce (minustwo 4).
+/- ===> 2 -/
+/- end minustwo -/
+
+def evenb : nat → bool
+  | zero := true
+  | (succ zero) := false
+  | (succ (succ n)) := evenb n
+
+def oddb (n:nat) : bool := bnot (evenb n)
+
+example : oddb 1 = tt := rfl
+
+example : oddb 4 = ff := rfl
+
+namespace nat_playground2
+
+def plus : nat → nat → nat
+  | zero m := m
+  | (succ n) m := succ (plus n m)
+
+#reduce (plus 3 2).
+
+/- plus eval -/
+/-  plus (succ (succ (succ O))) (succ (succ O))
+==> succ (plus (succ (succ O)) (succ (succ O)))
+      by the second clause of the match
+==> succ (succ (plus (succ O) (succ (succ O))))
+      by the second clause of the match
+==> succ (succ (succ (plus O (succ (succ O)))))
+      by the second clause of the match
+==> succ (succ (succ (succ (succ O))))
+      by the first clause of the match
+-/
+/- plus eval (end) -/
+
+def minus : nat → nat → nat
+  | zero _ := zero
+  | n@(succ _) zero := n
+  | (succ n) (succ m) := minus n m
+
+/- subtracted_from -/
+def subtracted_from (m n : nat) : nat := minus n m
+
+def mult (m : nat) : nat → nat
+  | zero := zero
+  | (succ n) := plus m (mult n)
+
+def exp (base : nat) : nat → nat
+  | zero := succ zero
+  | (succ p) := mult base (exp p)
+
+end nat_playground2
+
+namespace nat
 
 -- Exercise: 1 star (factorial)
 def factorial : ℕ → ℕ
@@ -149,6 +258,8 @@ begin
   rw [hx, hx]
 end
 
+end nat
+
 theorem negation_fn_applied_twice :
   ∀ f : bool → bool, (∀ x : bool, f x = bnot x) → ∀ b : bool, f (f b) = b :=
 begin
@@ -206,4 +317,3 @@ lemma test_bin_incr4 :
   incr (omtt (twice $ omtt zero)) = twice (omtt (omtt zero)) := rfl
 
 end basics
-end hidden
