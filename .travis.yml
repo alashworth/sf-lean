@@ -10,3 +10,4 @@ install:
 script:
   - echo $TRAVIS_BUILD_DIR
   - leanpkg test
+  - bash -c "! grep -r --include=\"*.rst\" 'Coq\|Galina' ."
