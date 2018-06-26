@@ -150,16 +150,16 @@ def plus : nat → nat → nat
 #reduce (plus 3 2).
 
 /- plus eval -/
-/-  plus (succ (succ (succ O))) (succ (succ O))
-==> succ (plus (succ (succ O)) (succ (succ O)))
-      by the second clause of the match
-==> succ (succ (plus (succ O) (succ (succ O))))
-      by the second clause of the match
-==> succ (succ (succ (plus O (succ (succ O)))))
-      by the second clause of the match
-==> succ (succ (succ (succ (succ O))))
-      by the first clause of the match
--/
+example : plus 3 2 = _ :=
+calc   plus (succ (succ (succ zero))) (succ (succ zero))
+     = succ (plus (succ (succ zero)) (succ (succ zero))) : rfl
+                  -- by the second clause of the match
+...  = succ (succ (plus (succ zero) (succ (succ zero)))) : rfl
+                  -- by the second clause of the match
+...  = succ (succ (succ (plus zero (succ (succ zero))))) : rfl
+                  -- by the second clause of the match
+...  = succ (succ (succ (succ (succ zero))))             : rfl
+                  -- by the first clause of the match
 /- plus eval (end) -/
 
 def minus : nat → nat → nat
@@ -183,15 +183,24 @@ end nat_playground2
 namespace nat
 
 -- Exercise: 1 star (factorial)
-def factorial : ℕ → ℕ
-| 0 := 1
-| 1 := 1
-| (nat.succ n) := (nat.succ n) * factorial n
+def factorial : ℕ → ℕ :=
+sorry -- replace `:= sorry` with your definition
 
-lemma test_factorial1 : (factorial 3) = 6 := rfl
-lemma test_factorial2 : (factorial 5) = 120 := rfl
+lemma test_factorial1 : (factorial 3) = 6   := sorry -- fill in here
+lemma test_factorial2 : (factorial 5) = 120 := sorry -- fill in here
 
--- Exercise: 1 star (blt_nat)
+-- | 0 := 1
+-- | 1 := 1
+-- | (nat.succ n) := (nat.succ n) * factorial n
+
+section
+
+local infixl + := nat_playground2.plus
+local infixl - := nat_playground2.minus
+local infixl * := nat_playground2.mult
+
+end
+
 def beq_nat : ℕ → ℕ → bool
 | 0 0 := tt
 | 0 _ := ff
@@ -207,12 +216,13 @@ lemma test_leb1 : leb 2 2 = tt := rfl
 lemma test_leb2 : leb 2 4 = tt := rfl
 lemma test_leb3 : leb 4 2 = ff := rfl
 
-def blt_nat : ℕ → ℕ → bool :=
-λ a b, if ¬ beq_nat a b ∧ leb a b then tt else ff
+-- Exercise: 1 star (blt_nat)
+def blt_nat (a b : ℕ) : bool :=
+sorry -- replace `:= sorry` with your definition
 
-lemma test_blt_nat1 : (blt_nat 2 2) = ff := rfl
-lemma test_blt_nat2 : (blt_nat 2 4) = tt := rfl
-lemma test_blt_nat3 : (blt_nat 4 2) = ff := rfl
+lemma test_blt_nat1 : (blt_nat 2 2) = ff := sorry -- fill in here
+lemma test_blt_nat2 : (blt_nat 2 4) = tt := sorry -- fill in here
+lemma test_blt_nat3 : (blt_nat 4 2) = ff := sorry -- fill in here
 
 -- Exercise: 1 star (plus_id_exercise)
 theorem plus_id_exercise : ∀ n m o : ℕ, n = m → m = o → n + m = m + o :=
