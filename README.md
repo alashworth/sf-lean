@@ -2,6 +2,8 @@
 Software Foundations in Lean
 ====================
 
+[![Build Status](https://travis-ci.com/alashworth/sf-lean.svg?branch=lean-3.4.1)](https://travis-ci.com/alashworth/sf-lean)
+
 Tasks
 -----
 
