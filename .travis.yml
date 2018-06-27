@@ -1,13 +1,23 @@
-language: generic
 cache:
   directories:
-  - "$TRAVIS_BUILD_DIR/_target"
+    - "$TRAVIS_BUILD_DIR/_target"
 
-install:
-  - curl https://raw.githubusercontent.com/Kha/elan/master/elan-init.sh -sSf | sh -s -- --default-toolchain none -y
-  - source ~/.elan/env
 
-script:
-  - echo $TRAVIS_BUILD_DIR
-  - leanpkg test
-  - bash -c "! grep -r --include=\"*.rst\" 'Coq\|Galina' ."
+matrix:
+  include:
+    - env: "MAKE=Lean"
+      install:
+        - curl https://raw.githubusercontent.com/Kha/elan/master/elan-init.sh -sSf | sh -s -- --default-toolchain none -y
+        - source ~/.elan/env
+      script:
+      - leanpkg test
+      - bash -c "! grep -r --include=\"*.rst\" 'Coq\|Galina' ."
+      language: generic
+    - env: "MAKE=HTML"
+      install:
+        - make install-deps
+      script:
+        - make html
+      language: python
+      python:
+        - "3.6"
