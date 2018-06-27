@@ -38,3 +38,9 @@ Tasks
 
  * *Review*: read chapter from beginning to end, from end to beginning
    and do the exercises to make sure the whole is conherent.
+
+Resources
+---------
+
+ * [Coq / Lean cheat sheet](https://github.com/jldodds/coq-lean-cheatsheet)
+ * [reStructured Text cheat sheet](https://github.com/ralsina/rst-cheatsheet/blob/master/rst-cheatsheet.rst)
