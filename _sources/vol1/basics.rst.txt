@@ -473,8 +473,69 @@ recursion.
 Exercise: 1 star (factorial)
 ****************************
 
-..
-   to be continued
+Recall the standard mathematical factorial function:
+
+.. code-block:: text
+
+       factorial(0)  =  1
+       factorial(n)  =  n * factorial(n-1)     (if n>0)
+
+Translate this into Lean.
+
+.. literalinclude:: ../../src/basics.lean
+  :language: lean
+  :start-after: -- Exercise: 1 star (factorial)
+  :end-at: lemma test_factorial2
+
+We can make numerical expressions a little easier to read and write by
+introducing *notations* for addition, multiplication, and subtraction.
+
+.. literalinclude:: ../../src/basics.lean
+  :language: lean
+  :start-at: infixl +
+  :end-at: infixl *
+
+(``infixl`` adds a new *infix*, *left-associative* operator. Other
+keywords can be used for defining notation such as ``infix``,
+``infixr`` (right-associative) and ``notation`` (for free-form
+notation).  "More on Notation" section at the end of this chapter.)
+
+Note that these do not change the definitions we've already made: they
+are simply instructions to the Lean parser to accept ``x + y`` in
+place of ``plus x y`` and, conversely, to the Lean pretty-printer to
+display ``plus x y`` as ``x + y``.
+
+When we say that Lean comes with almost nothing built-in, we really
+mean it: even equality testing for numbers is a user-defined
+operation! We now define a function ``beq_nat``, which tests natural
+numbers for equality, yielding a boolean. Note the use of nested
+matches (we could also have used a simultaneous match, as we did in
+minus.)
+
+.. literalinclude:: ../../src/basics.lean
+  :language: lean
+  :start-at: def beq_nat
+  :lines: -5
+
+The leb function tests whether its first argument is less than or
+equal to its second argument, yielding a boolean.
+
+.. literalinclude:: ../../src/basics.lean
+  :language: lean
+  :start-at: def leb
+  :end-at: lemma test_leb3
+
+Exercise: 1 star (blt_nat)
+****************************
+
+The blt_nat function tests natural numbers for less-than, yielding a
+boolean. Instead of making up a new recursive function for this one, define it
+in terms of a previously defined functions.
+
+.. literalinclude:: ../../src/basics.lean
+  :language: lean
+  :start-at: -- Exercise: 1 star (blt_nat)
+  :end-at: lemma test_blt_nat3
 
 Proof by Simplification
 =======================

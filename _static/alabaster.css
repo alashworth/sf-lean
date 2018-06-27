@@ -55,7 +55,7 @@
 /* -- page layout ----------------------------------------------------------- */
 
 body {
-    font-family: Times New Roman, Times, serif;
+    font-family: 'goudy old style', 'minion pro', 'bell mt', Georgia, 'Hiragino Mincho Pro', serif;
     font-size: 17px;
     background-color: #fff;
     color: #000;
@@ -75,11 +75,11 @@ div.documentwrapper {
 }
 
 div.bodywrapper {
-    margin: 0 0 0 230px;
+    margin: 0 0 0 220px;
 }
 
 div.sphinxsidebar {
-    width: 230px;
+    width: 220px;
     font-size: 14px;
     line-height: 1.5;
 }
@@ -159,7 +159,7 @@ div.sphinxsidebarwrapper p.blurb {
 
 div.sphinxsidebar h3,
 div.sphinxsidebar h4 {
-    font-family: Times New Roman, Times, serif;
+    font-family: 'Garamond', 'Georgia', serif;
     color: #444;
     font-size: 24px;
     font-weight: normal;
@@ -203,7 +203,7 @@ div.sphinxsidebar ul li.toctree-l2 > a {
 
 div.sphinxsidebar input {
     border: 1px solid #CCC;
-    font-family: Times New Roman, Times, serif;
+    font-family: 'goudy old style', 'minion pro', 'bell mt', Georgia, 'Hiragino Mincho Pro', serif;
     font-size: 1em;
 }
 
@@ -236,7 +236,7 @@ div.body h3,
 div.body h4,
 div.body h5,
 div.body h6 {
-    font-family: Times New Roman, Times, serif;
+    font-family: 'Garamond', 'Georgia', serif;
     font-weight: normal;
     margin: 30px 0px 10px 0px;
     padding: 0;
@@ -277,7 +277,7 @@ div.admonition tt.xref, div.admonition code.xref, div.admonition a tt {
 }
 
 div.admonition p.admonition-title {
-    font-family: Times New Roman, Times, serif;
+    font-family: 'Garamond', 'Georgia', serif;
     font-weight: normal;
     font-size: 24px;
     margin: 0 0 10px 0;
@@ -494,7 +494,7 @@ dl pre, blockquote pre, li pre {
 }
 
 tt, code {
-    background-color: white;
+    background-color: #ecf0f3;
     color: #222;
     /* padding: 1px 2px; */
 }

@@ -5,8 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=ascii" />
-    <title>More Basic Tactics &#8212; Software Foundations in Lean 3.4.1 documentation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>More Basic Tactics &#8212; sf-lean 0.1 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript" src="../_static/documentation_options.js"></script>
@@ -14,7 +14,6 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Logic in Lean" href="logic.html" />
@@ -34,33 +33,33 @@
           <div class="body" role="main">
             
   <div class="section" id="more-basic-tactics">
-<h1>More Basic Tactics<a class="headerlink" href="#more-basic-tactics" title="Permalink to this headline">&#182;</a></h1>
+<h1>More Basic Tactics<a class="headerlink" href="#more-basic-tactics" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="the-apply-tactic">
-<h2>The <code class="docutils literal notranslate"><span class="pre">apply</span></code> Tactic<a class="headerlink" href="#the-apply-tactic" title="Permalink to this headline">&#182;</a></h2>
+<h2>The <code class="docutils literal notranslate"><span class="pre">apply</span></code> Tactic<a class="headerlink" href="#the-apply-tactic" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="the-apply-with-tactic">
-<h2>The <code class="docutils literal notranslate"><span class="pre">apply</span> <span class="pre">...</span> <span class="pre">with</span> <span class="pre">...</span></code> Tactic<a class="headerlink" href="#the-apply-with-tactic" title="Permalink to this headline">&#182;</a></h2>
+<h2>The <code class="docutils literal notranslate"><span class="pre">apply</span> <span class="pre">...</span> <span class="pre">with</span> <span class="pre">...</span></code> Tactic<a class="headerlink" href="#the-apply-with-tactic" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="the-inversion-tactic">
-<h2>The <code class="docutils literal notranslate"><span class="pre">inversion</span></code> Tactic<a class="headerlink" href="#the-inversion-tactic" title="Permalink to this headline">&#182;</a></h2>
+<h2>The <code class="docutils literal notranslate"><span class="pre">inversion</span></code> Tactic<a class="headerlink" href="#the-inversion-tactic" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="using-tactics-on-hypotheses">
-<h2>Using Tactics on Hypotheses<a class="headerlink" href="#using-tactics-on-hypotheses" title="Permalink to this headline">&#182;</a></h2>
+<h2>Using Tactics on Hypotheses<a class="headerlink" href="#using-tactics-on-hypotheses" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="varying-the-induction-hypothesis">
-<h2>Varying the Induction Hypothesis<a class="headerlink" href="#varying-the-induction-hypothesis" title="Permalink to this headline">&#182;</a></h2>
+<h2>Varying the Induction Hypothesis<a class="headerlink" href="#varying-the-induction-hypothesis" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="unfolding-definitions">
-<h2>Unfolding Definitions<a class="headerlink" href="#unfolding-definitions" title="Permalink to this headline">&#182;</a></h2>
+<h2>Unfolding Definitions<a class="headerlink" href="#unfolding-definitions" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="using-destruct-on-compound-expressions">
-<h2>Using destruct on Compound Expressions<a class="headerlink" href="#using-destruct-on-compound-expressions" title="Permalink to this headline">&#182;</a></h2>
+<h2>Using destruct on Compound Expressions<a class="headerlink" href="#using-destruct-on-compound-expressions" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="review">
-<h2>Review<a class="headerlink" href="#review" title="Permalink to this headline">&#182;</a></h2>
+<h2>Review<a class="headerlink" href="#review" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="additional-exercises">
-<h2>Additional Exercises<a class="headerlink" href="#additional-exercises" title="Permalink to this headline">&#182;</a></h2>
+<h2>Additional Exercises<a class="headerlink" href="#additional-exercises" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -70,60 +69,37 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="../index.html">Software Foundations in Lean</a></h1>
-
-
-
-
-
-
-
-
-<!-- <h3>Navigation</h3> -->
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="preface.html">Preface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="basics.html">Functional Programming in Lean</a></li>
-<li class="toctree-l1"><a class="reference internal" href="induction.html">Proof by Induction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lists.html">Working with Structured Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="poly.html">Polymorphism and Higher-Order Functions</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">More Basic Tactics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#the-apply-tactic">The <code class="docutils literal notranslate"><span class="pre">apply</span></code> Tactic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-apply-with-tactic">The <code class="docutils literal notranslate"><span class="pre">apply</span> <span class="pre">...</span> <span class="pre">with</span> <span class="pre">...</span></code> Tactic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-inversion-tactic">The <code class="docutils literal notranslate"><span class="pre">inversion</span></code> Tactic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#using-tactics-on-hypotheses">Using Tactics on Hypotheses</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#varying-the-induction-hypothesis">Varying the Induction Hypothesis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#unfolding-definitions">Unfolding Definitions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#using-destruct-on-compound-expressions">Using destruct on Compound Expressions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#review">Review</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#additional-exercises">Additional Exercises</a></li>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">More Basic Tactics</a><ul>
+<li><a class="reference internal" href="#the-apply-tactic">The <code class="docutils literal notranslate"><span class="pre">apply</span></code> Tactic</a></li>
+<li><a class="reference internal" href="#the-apply-with-tactic">The <code class="docutils literal notranslate"><span class="pre">apply</span> <span class="pre">...</span> <span class="pre">with</span> <span class="pre">...</span></code> Tactic</a></li>
+<li><a class="reference internal" href="#the-inversion-tactic">The <code class="docutils literal notranslate"><span class="pre">inversion</span></code> Tactic</a></li>
+<li><a class="reference internal" href="#using-tactics-on-hypotheses">Using Tactics on Hypotheses</a></li>
+<li><a class="reference internal" href="#varying-the-induction-hypothesis">Varying the Induction Hypothesis</a></li>
+<li><a class="reference internal" href="#unfolding-definitions">Unfolding Definitions</a></li>
+<li><a class="reference internal" href="#using-destruct-on-compound-expressions">Using destruct on Compound Expressions</a></li>
+<li><a class="reference internal" href="#review">Review</a></li>
+<li><a class="reference internal" href="#additional-exercises">Additional Exercises</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="logic.html">Logic in Lean</a></li>
-<li class="toctree-l1"><a class="reference internal" href="indprop.html">Inductively Defined Propositions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="maps.html">Total and Partial Maps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proofobjects.html">The Curry-Howard Correspondence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="indprinciples.html">Induction Principles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rel.html">Properties of Relations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="imp.html">Simple Imperative Programs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="impparser.html">Lexing and Parsing in Lean</a></li>
-<li class="toctree-l1"><a class="reference internal" href="impcevalfun.html">An Evaluation Function for Imp</a></li>
-<li class="toctree-l1"><a class="reference internal" href="extraction.html">Extracting C++ from Lean</a></li>
-<li class="toctree-l1"><a class="reference internal" href="auto.html">More Automation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="postscript.html">Postscript</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bib.html">Bibliography</a></li>
 </ul>
-
-
-<hr />
+<div class="relations">
+<h3>Related Topics</h3>
 <ul>
-    
-    <li class="toctree-l1"><a href="software_foundations_in_lean.pdf">PDF version</a></li>
-    
-    <li class="toctree-l1"><a href="https://leanprover.github.io/">Lean Home</a></li>
-    
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="poly.html" title="previous chapter">Polymorphism and Higher-Order Functions</a></li>
+      <li>Next: <a href="logic.html" title="next chapter">Logic in Lean</a></li>
+  </ul></li>
 </ul>
-
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/vol1/tactics.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <div class="searchformwrapper">
@@ -141,7 +117,7 @@
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2017, Jeremy Avigad, Leonardo de Moura, and Soonho Kong.
+      &copy;2018, Pierce et al..
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
